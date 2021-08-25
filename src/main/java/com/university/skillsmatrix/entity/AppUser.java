@@ -20,7 +20,7 @@ public class AppUser {
 
     @NotNull
     @Column(name = "username")
-    private String userName;
+    private String username;
 
     @NotNull
     @Column(name = "password")
@@ -45,4 +45,8 @@ public class AppUser {
             inverseJoinColumns=@JoinColumn(name="skill_id")
     )
     private List<Skill> skills = new ArrayList<>();
+
+    public String toString(){
+        return String.format("%d, %s, %s, %s", id, username, password, email);
+    }
 }

@@ -15,7 +15,7 @@ insert into personal_details (first_name, surname, address_first_line, address_s
 create sequence personal_details_id  start  with (select max(id) + 1 from personal_details);
 
 insert into role (type) values ('ROLE_USER');
-insert into role (type) values ('ROLE_ADMIN');
+insert into role (type) values ('ROLE_MANAGER');
 
 insert into app_user(username, password, email, details_id, role_id) values ('user1', '$2a$10$0tkDsotEK5feenJ.9wl5OO8TV5OB.gO7hzBMX1z.LFsIF/8OmpAiC', 'user1@email.com', 1, 1);
 insert into app_user(username, password, email, details_id, role_id) values ('user2', '$2a$10$0tkDsotEK5feenJ.9wl5OO8TV5OB.gO7hzBMX1z.LFsIF/8OmpAiC', 'user2@email.com', 2, 1);

@@ -2,6 +2,8 @@ package com.university.skillsmatrix.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -9,6 +11,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "role")
 @Getter
 @Setter
+@ToString
 public class Role {
     @Id
     @Column(name = "id")
@@ -18,8 +21,4 @@ public class Role {
     @NotNull
     @Column(name = "type")
     private String type;
-
-    public String toString(){
-        return String.format("%d, %s, %s" , id, type);
-    }
  }
