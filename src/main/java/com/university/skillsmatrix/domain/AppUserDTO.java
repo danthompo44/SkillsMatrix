@@ -34,6 +34,15 @@ public class AppUserDTO {
 
     private List<SkillDTO> skills = new ArrayList<>();
 
+    private void addSkill(SkillDTO skill){
+        if(skills.contains(skill)) return;
+        skills.add(skill);
+    }
+
+    private void removeSkill(SkillDTO skill){
+        skills.remove(skill);
+    }
+
     public String toString(){
         return String.format("%d, %s, %s, %s", id, username, password, email);
     }
