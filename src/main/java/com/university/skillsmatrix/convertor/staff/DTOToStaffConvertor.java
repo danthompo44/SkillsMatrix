@@ -1,7 +1,6 @@
 package com.university.skillsmatrix.convertor.staff;
 
 import com.university.skillsmatrix.convertor.category.DTOToSkillCategoryConvertor;
-import com.university.skillsmatrix.convertor.skill.DTOToSkillConvertor;
 import com.university.skillsmatrix.convertor.details.DTOToPersonalDetailsConvertor;
 import com.university.skillsmatrix.convertor.manager.DTOToManagerConvertor;
 import com.university.skillsmatrix.convertor.user.DTOToAppUserConvertor;

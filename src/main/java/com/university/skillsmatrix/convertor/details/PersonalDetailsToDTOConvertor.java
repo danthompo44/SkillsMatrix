@@ -2,7 +2,9 @@ package com.university.skillsmatrix.convertor.details;
 
 import com.university.skillsmatrix.domain.PersonalDetailsDTO;
 import com.university.skillsmatrix.entity.PersonalDetails;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PersonalDetailsToDTOConvertor {
     public PersonalDetailsDTO convert(PersonalDetails d){
         PersonalDetailsDTO dto = new PersonalDetailsDTO();

@@ -4,7 +4,9 @@ import com.university.skillsmatrix.convertor.details.PersonalDetailsToDTOConvert
 import com.university.skillsmatrix.convertor.user.AppUserToDTOConvertor;
 import com.university.skillsmatrix.domain.ManagerDTO;
 import com.university.skillsmatrix.entity.Manager;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ManagerToDTOConvertor {
     private final AppUserToDTOConvertor userConverter = new AppUserToDTOConvertor();
     private final PersonalDetailsToDTOConvertor detailsConvertor = new PersonalDetailsToDTOConvertor();

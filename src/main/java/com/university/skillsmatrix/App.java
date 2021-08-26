@@ -1,8 +1,6 @@
 package com.university.skillsmatrix;
 
-import com.university.skillsmatrix.convertor.skill.SkillToDTOConvertor;
 import com.university.skillsmatrix.convertor.staff.StaffToDTOConvertor;
-import com.university.skillsmatrix.domain.SkillDTO;
 import com.university.skillsmatrix.domain.StaffDTO;
 import com.university.skillsmatrix.entity.*;
 

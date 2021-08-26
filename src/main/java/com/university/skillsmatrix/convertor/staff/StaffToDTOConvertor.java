@@ -8,10 +8,11 @@ import com.university.skillsmatrix.domain.SkillDTO;
 import com.university.skillsmatrix.domain.StaffDTO;
 import com.university.skillsmatrix.entity.Skill;
 import com.university.skillsmatrix.entity.Staff;
-
+import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class StaffToDTOConvertor {
     PersonalDetailsToDTOConvertor detailsConvertor = new PersonalDetailsToDTOConvertor();
     ManagerToDTOConvertor managerConvertor = new ManagerToDTOConvertor();
