@@ -21,8 +21,14 @@ insert into app_user(username, password, email, role_id) values ('user1', '$2a$1
 insert into app_user(username, password, email, role_id) values ('user2', '$2a$10$0tkDsotEK5feenJ.9wl5OO8TV5OB.gO7hzBMX1z.LFsIF/8OmpAiC', 'user2@email.com', 1);
 insert into app_user(username, password, email, role_id) values ('admin', '$2a$10$Pyv1dhPciGaim10Xy7QHM.dpzfOfF1WfksB8zCYVoZnTOmtaDsiL6', 'admin@email.com', 2);
 
+insert into manager(details_id, user_id) values (1, 3);
+
+insert into staff(details_id, user_id, manager_id) values (2, 1, 1);
+insert into staff(details_id, user_id, manager_id) values (3, 2, 1);
+
+insert into staff_skill(staff_id, skill_id, expiry_date) values (1, 1, '2022-06-21');
+insert into staff_skill(staff_id, skill_id, expiry_date) values (1, 2, '2023-06-21');
+insert into staff_skill(staff_id, skill_id, expiry_date) values (2, 3, '2022-08-21');
+insert into staff_skill(staff_id, skill_id, expiry_date) values (2, 2, '2023-08-21');
 
 
-insert into app_user_skill (user_id, skill_id) values (1,1);
-insert into app_user_skill (user_id, skill_id) values (2,2);
-insert into app_user_skill (user_id, skill_id) values (3,4);

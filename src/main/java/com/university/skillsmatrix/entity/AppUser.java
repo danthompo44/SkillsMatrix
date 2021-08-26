@@ -6,8 +6,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
-@Entity(name="Staff")
-@Table(name = "staff")
+@Entity(name="App_user")
+@Table(name = "app_user")
 @Getter
 @Setter
 public class AppUser {

@@ -39,12 +39,32 @@ create table skill
     foreign key (category_id) references skill_category(id)
 );
 
+create table manager
+(
+    id int auto_increment primary key,
+    details_id int not null,
+    user_id int not null,
+    foreign key (details_id) references personal_details(id),
+    foreign key (user_id) references app_user(id)
+);
+
+create table staff
+(
+    id int auto_increment primary key,
+    details_id int not null,
+    user_id int not null,
+    manager_id int not null,
+    foreign key (details_id) references personal_details(id),
+    foreign key (user_id) references app_user(id),
+    foreign key (manager_id) references manager(id)
+);
+
 create table staff_skill
 (
     id      int auto_increment primary key,
-    user_id int not null,
+    staff_id int not null,
     skill_id int not null,
     expiry_date date not null,
-    foreign key (user_id) references app_user (id),
+    foreign key (staff_id) references staff (id),
     foreign key (skill_id) references skill (id)
 );
