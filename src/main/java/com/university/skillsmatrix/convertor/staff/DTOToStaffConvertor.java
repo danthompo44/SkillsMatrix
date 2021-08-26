@@ -1,5 +1,6 @@
 package com.university.skillsmatrix.convertor.staff;
 
+import com.university.skillsmatrix.convertor.category.DTOToSkillCategoryConvertor;
 import com.university.skillsmatrix.convertor.skill.DTOToSkillConvertor;
 import com.university.skillsmatrix.convertor.details.DTOToPersonalDetailsConvertor;
 import com.university.skillsmatrix.convertor.manager.DTOToManagerConvertor;
@@ -15,8 +16,8 @@ import java.util.List;
 public class DTOToStaffConvertor {
     private final DTOToPersonalDetailsConvertor detailsConvertor = new DTOToPersonalDetailsConvertor();
     private final DTOToManagerConvertor managerConvertor = new DTOToManagerConvertor();
-    private final DTOToSkillConvertor skillConvertor = new DTOToSkillConvertor();
     private final DTOToAppUserConvertor userConvertor = new DTOToAppUserConvertor();
+    private final DTOToSkillCategoryConvertor catConvertor = new DTOToSkillCategoryConvertor();
 
     public Staff convert(StaffDTO dto){
         Staff s = new Staff();
@@ -33,9 +34,36 @@ public class DTOToStaffConvertor {
         List<Skill> skillList = new ArrayList<>();
 
         for(SkillDTO s: dtoList){
-            skillList.add(skillConvertor.convert(s));
+            skillList.add(convertSkill(s));
         }
 
         return skillList;
+    }
+
+    private Skill convertSkill(SkillDTO dto){
+        Skill skill = new Skill();
+        skill.setId(dto.getId());
+        skill.setName(dto.getName());
+        skill.setCategory(catConvertor.convert(dto.getCategory()));
+        skill.setStaffList(addStaff(dto.getStaffList()));
+
+        return skill;
+    }
+
+    private List<Staff> addStaff(List<StaffDTO> staffDTOList){
+        List<Staff> staffList = new ArrayList<>();
+
+        for(StaffDTO dto: staffDTOList){
+            Staff s = new Staff();
+            s.setId(dto.getId());
+            s.setUser(userConvertor.convert(dto.getUser()));
+            s.setDetails(detailsConvertor.convert(dto.getDetails()));
+            s.setManager(managerConvertor.convert(dto.getManager()));
+            s.setSkills(addSkills(dto.getSkills()));
+
+            staffList.add(s);
+        }
+
+        return staffList;
     }
 }

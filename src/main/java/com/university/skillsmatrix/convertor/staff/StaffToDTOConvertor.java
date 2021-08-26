@@ -1,6 +1,6 @@
 package com.university.skillsmatrix.convertor.staff;
 
-import com.university.skillsmatrix.convertor.skill.SkillToDTOConvertor;
+import com.university.skillsmatrix.convertor.category.SkillCategoryToDTOConvertor;
 import com.university.skillsmatrix.convertor.details.PersonalDetailsToDTOConvertor;
 import com.university.skillsmatrix.convertor.manager.ManagerToDTOConvertor;
 import com.university.skillsmatrix.convertor.user.AppUserToDTOConvertor;
@@ -16,7 +16,7 @@ public class StaffToDTOConvertor {
     PersonalDetailsToDTOConvertor detailsConvertor = new PersonalDetailsToDTOConvertor();
     ManagerToDTOConvertor managerConvertor = new ManagerToDTOConvertor();
     AppUserToDTOConvertor userConvertor = new AppUserToDTOConvertor();
-    SkillToDTOConvertor skillConvertor = new SkillToDTOConvertor();
+    SkillCategoryToDTOConvertor catConvertor = new SkillCategoryToDTOConvertor();
 
     public StaffDTO convert(Staff s){
         StaffDTO dto = new StaffDTO();
@@ -33,9 +33,34 @@ public class StaffToDTOConvertor {
         List<SkillDTO> dtoList = new ArrayList<>();
 
         for(Skill s: skillList){
-            dtoList.add(skillConvertor.convert(s));
+            dtoList.add(convertSkill(s));
         }
 
+        return dtoList;
+    }
+
+    private SkillDTO convertSkill(Skill s){
+        SkillDTO dto = new SkillDTO();
+        dto.setId(s.getId());
+        dto.setName(s.getName());
+        dto.setCategory(catConvertor.convert(s.getCategory()));
+        dto.setStaffList(addStaff(s.getStaffList()));
+        return dto;
+    }
+
+    private List<StaffDTO> addStaff(List<Staff> staffList){
+        List<StaffDTO> dtoList = new ArrayList<>();
+
+        for(Staff s: staffList){
+            StaffDTO dto = new StaffDTO();
+            dto.setId(s.getId());
+            dto.setUser(userConvertor.convert(s.getUser()));
+            dto.setManager(managerConvertor.convert(s.getManager()));
+            dto.setDetails(detailsConvertor.convert(s.getDetails()));
+            dto.setSkills(addSkills(s.getSkills()));
+
+            dtoList.add(dto);
+        }
         return dtoList;
     }
 }
