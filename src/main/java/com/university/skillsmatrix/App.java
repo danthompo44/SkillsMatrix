@@ -1,7 +1,9 @@
 package com.university.skillsmatrix;
 
 import com.university.skillsmatrix.convertor.skill.SkillToDTOConvertor;
+import com.university.skillsmatrix.convertor.staff.StaffToDTOConvertor;
 import com.university.skillsmatrix.domain.SkillDTO;
+import com.university.skillsmatrix.domain.StaffDTO;
 import com.university.skillsmatrix.entity.*;
 
 import java.util.ArrayList;
@@ -77,8 +79,8 @@ public class App {
         System.out.println("Skill\n");
         System.out.println(s);
 
-        final SkillToDTOConvertor convertor = new SkillToDTOConvertor();
-        SkillDTO dto = convertor.convert(s);
+        final StaffToDTOConvertor convertor = new StaffToDTOConvertor();
+        StaffDTO dto = convertor.convert(s1);
         System.out.println("\n\nDTO\n\n");
         System.out.println(dto);
     }
