@@ -8,10 +8,12 @@ import com.university.skillsmatrix.domain.SkillDTO;
 import com.university.skillsmatrix.domain.StaffDTO;
 import com.university.skillsmatrix.entity.Skill;
 import com.university.skillsmatrix.entity.Staff;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class DTOToStaffConvertor {
     private final DTOToPersonalDetailsConvertor detailsConvertor = new DTOToPersonalDetailsConvertor();
     private final DTOToManagerConvertor managerConvertor = new DTOToManagerConvertor();
@@ -44,7 +46,6 @@ public class DTOToStaffConvertor {
         skill.setId(dto.getId());
         skill.setName(dto.getName());
         skill.setCategory(catConvertor.convert(dto.getCategory()));
-        skill.setStaffList(addStaff(dto.getStaffList()));
 
         return skill;
     }

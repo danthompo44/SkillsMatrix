@@ -45,7 +45,6 @@ public class StaffToDTOConvertor {
         dto.setId(s.getId());
         dto.setName(s.getName());
         dto.setCategory(catConvertor.convert(s.getCategory()));
-        dto.setStaffList(addStaff(s.getStaffList()));
         return dto;
     }
 
