@@ -17,9 +17,9 @@ create sequence personal_details_id  start  with (select max(id) + 1 from person
 insert into role (type) values ('ROLE_USER');
 insert into role (type) values ('ROLE_MANAGER');
 
-insert into app_user(username, password, email, details_id, role_id) values ('user1', '$2a$10$0tkDsotEK5feenJ.9wl5OO8TV5OB.gO7hzBMX1z.LFsIF/8OmpAiC', 'user1@email.com', 1, 1);
-insert into app_user(username, password, email, details_id, role_id) values ('user2', '$2a$10$0tkDsotEK5feenJ.9wl5OO8TV5OB.gO7hzBMX1z.LFsIF/8OmpAiC', 'user2@email.com', 2, 1);
-insert into app_user(username, password, email, details_id, role_id) values ('admin', '$2a$10$Pyv1dhPciGaim10Xy7QHM.dpzfOfF1WfksB8zCYVoZnTOmtaDsiL6', 'admin@email.com', 3, 2);
+insert into app_user(username, password, email, role_id) values ('user1', '$2a$10$0tkDsotEK5feenJ.9wl5OO8TV5OB.gO7hzBMX1z.LFsIF/8OmpAiC', 'user1@email.com', 1);
+insert into app_user(username, password, email, role_id) values ('user2', '$2a$10$0tkDsotEK5feenJ.9wl5OO8TV5OB.gO7hzBMX1z.LFsIF/8OmpAiC', 'user2@email.com', 1);
+insert into app_user(username, password, email, role_id) values ('admin', '$2a$10$Pyv1dhPciGaim10Xy7QHM.dpzfOfF1WfksB8zCYVoZnTOmtaDsiL6', 'admin@email.com', 2);
 
 
 

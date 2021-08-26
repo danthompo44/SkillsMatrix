@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter
@@ -26,22 +24,8 @@ public class AppUserDTO {
     @Size(min = 1, max = 50, message = "Email cannot exceed 50 characters")
     private String email;
 
-    @NotNull(message = "Personal details cannot be null")
-    private PersonalDetailsDTO details;
-
     @NotNull(message = "Role cannot be null")
     private RoleDTO role;
-
-    private List<SkillDTO> skills = new ArrayList<>();
-
-    private void addSkill(SkillDTO skill){
-        if(skills.contains(skill)) return;
-        skills.add(skill);
-    }
-
-    private void removeSkill(SkillDTO skill){
-        skills.remove(skill);
-    }
 
     public String toString(){
         return String.format("%d, %s, %s, %s", id, username, password, email);

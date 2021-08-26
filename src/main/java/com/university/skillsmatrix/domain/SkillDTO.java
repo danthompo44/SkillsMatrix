@@ -1,5 +1,6 @@
 package com.university.skillsmatrix.domain;
 
+import com.university.skillsmatrix.entity.Staff;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,14 +25,14 @@ public class SkillDTO {
     @NotBlank(message = "Skill category cannot be blank")
     private SkillCategoryDTO category;
 
-    private List<AppUserDTO> users = new ArrayList<>();
+    private List<StaffDTO> staffList = new ArrayList<>();
 
-    public void addUser(AppUserDTO user){
-        if(users.contains(user)) return;
-        users.add(user);
+    public void addStaff(StaffDTO staff){
+        if(staffList.contains(staff)) return;
+        staffList.add(staff);
     }
 
-    public void removeUser(AppUserDTO user){
-        users.remove(user);
+    public void removeUser(StaffDTO staff){
+        staffList.remove(staff);
     }
 }

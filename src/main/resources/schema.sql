@@ -27,9 +27,7 @@ create table app_user
     username   varchar(50) unique,
     password   varchar(255) not null,
     email      varchar(50)  not null unique,
-    details_id int          not null,
     role_id    int          not null,
-    foreign key (details_id) references personal_details (id),
     foreign key (role_id) references role (id)
 );
 
@@ -41,11 +39,12 @@ create table skill
     foreign key (category_id) references skill_category(id)
 );
 
-create table app_user_skill
+create table staff_skill
 (
     id      int auto_increment primary key,
     user_id int not null,
     skill_id int not null,
+    expiry_date date not null,
     foreign key (user_id) references app_user (id),
     foreign key (skill_id) references skill (id)
 );

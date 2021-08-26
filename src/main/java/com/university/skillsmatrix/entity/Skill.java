@@ -25,10 +25,10 @@ public class Skill {
     private SkillCategory category;
 
     @ManyToMany(mappedBy = "skills")
-    private List<AppUser> users = new ArrayList<>();
+    private List<Staff> staffList = new ArrayList<>();
 
     public String toString(){
         return String.format("%d, %s, %s, %s" ,
-                id, name, category, users);
+                id, name, category, staffList);
     }
 }
