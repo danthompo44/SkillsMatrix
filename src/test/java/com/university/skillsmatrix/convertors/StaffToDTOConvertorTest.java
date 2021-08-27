@@ -1,17 +1,11 @@
-package com.university.skillsmatrix.services;
+package com.university.skillsmatrix.convertors;
 
 import com.university.skillsmatrix.convertor.staff.StaffToDTOConvertor;
 import com.university.skillsmatrix.domain.*;
 import com.university.skillsmatrix.entity.*;
-import com.university.skillsmatrix.repository.StaffRepository;
-import com.university.skillsmatrix.service.StaffService;
-import org.junit.FixMethodOrder;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.runners.MethodSorters;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,35 +13,22 @@ import static org.mockito.MockitoAnnotations.openMocks;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class StaffServiceTest {
-    @Mock private StaffRepository staffRepository;
-    @Mock private StaffToDTOConvertor staffConvertor;
+public class StaffToDTOConvertorTest {
+    private StaffToDTOConvertor convertor;
+    private Staff staff;
+    private StaffDTO staffDTO;
 
-    private AutoCloseable closeable;
-
-    @InjectMocks
-    private StaffService staffService;
-
-    //Dummy Objects
     private PersonalDetails userDetails1 = new PersonalDetails();
     private PersonalDetails userDetails2 = new PersonalDetails();
-    private PersonalDetails userDetails3 = new PersonalDetails();
     private Role staffRole = new Role();
     private Role managerRole = new Role();
     private AppUser user1 = new AppUser();
     private AppUser user2 = new AppUser();
-    private AppUser user3 = new AppUser();
     private Manager manager = new Manager();
     private SkillCategory cat1 = new SkillCategory();
     private SkillCategory cat2 = new SkillCategory();
     private Skill skill1 = new Skill();
     private Skill skill2 = new Skill();
-    private Skill skill3 = new Skill();
-    private Staff staff1 = new Staff();
-    private Staff staff2 = new Staff();
-    private StaffDTO dto1 = null;
-    private StaffDTO dto2 = null;
 
     private StaffDTO convertToDTO(Staff staff){
         StaffDTO dto = new StaffDTO();
@@ -126,9 +107,11 @@ public class StaffServiceTest {
         return dto;
     }
 
-    @BeforeEach
-    void init(){
-        closeable = openMocks(this);
+    @Before
+    public void init(){
+        convertor = new StaffToDTOConvertor();
+        staff = new Staff();
+        staffDTO = new StaffDTO();
 
         //Set Details 1
         userDetails1.setId(92);
@@ -147,15 +130,6 @@ public class StaffServiceTest {
         userDetails2.setAddressSecondLine("Address line 2");
         userDetails2.setCounty("County 2");
         userDetails2.setPostcode("Postcode 2");
-
-        //Set Details 3
-        userDetails3.setId(94);
-        userDetails3.setFirstName("Mike");
-        userDetails3.setSurname("Myers");
-        userDetails3.setAddressFirstLine("Address line 1");
-        userDetails3.setAddressSecondLine("Address line 2");
-        userDetails3.setCounty("County 3");
-        userDetails3.setPostcode("Postcode 3");
 
         //Set Role 1
         staffRole.setId(35);
@@ -179,16 +153,9 @@ public class StaffServiceTest {
         user2.setPassword("password");
         user2.setRole(staffRole);
 
-        //Set AppUser 3
-        user3.setId(105);
-        user3.setUsername("Username 3");
-        user3.setEmail("email3@email.com");
-        user3.setPassword("password");
-        user3.setRole(staffRole);
-
         //Set Manager
         manager.setId(72);
-        manager.setDetails(userDetails3);
+        manager.setDetails(userDetails1);
         manager.setUser(user1);
 
         //Set Cat1
@@ -200,97 +167,91 @@ public class StaffServiceTest {
         cat2.setDescription("Networks");
 
         //Set Skill 1
-        skill1.setId(432);
-        skill1.setName("Java Programming");
+        skill1.setId(433);
+        skill1.setName("Git CLI");
         skill1.setCategory(cat1);
 
         //Set Skill 2
-        skill2.setId(433);
-        skill2.setName("Git CLI");
-        skill2.setCategory(cat1);
-
-        //Set Skill 3
-        skill1.setId(434);
-        skill1.setName("VLANs");
-        skill1.setCategory(cat2);
+        skill2.setId(434);
+        skill2.setName("VLANs");
+        skill2.setCategory(cat2);
 
         //Staff 1's skills
         List<Skill> staff1Skills = new ArrayList<>();
+        staff1Skills.add(skill1);
         staff1Skills.add(skill2);
-        staff1Skills.add(skill3);
-
-        //Staff 2's Skills
-        List<Skill> staff2Skills = new ArrayList<>();
-        staff2Skills.add(skill1);
-        staff2Skills.add(skill2);
-        staff2Skills.add(skill3);
 
         //Set Staff
-        staff1.setId(1L);
-        staff1.setDetails(userDetails1);
-        staff1.setUser(user2);
-        staff1.setManager(manager);
-        staff1.setSkills(staff1Skills);
-
-        staff2.setId(2L);
-        staff2.setDetails(userDetails2);
-        staff2.setUser(user3);
-        staff2.setManager(manager);
-        staff2.setSkills(staff2Skills);
+        staff.setId(1L);
+        staff.setDetails(userDetails1);
+        staff.setUser(user2);
+        staff.setManager(manager);
+        staff.setSkills(staff1Skills);
 
         //Staff List for SKill 1
         List<Staff> staffList1 = new ArrayList<>();
-        staffList1.add(staff2);
+        staffList1.add(staff);
 
         //Staff List for SKill 2
         List<Staff> staffList2 = new ArrayList<>();
-        staffList2.add(staff1);
-        staffList2.add(staff2);
-
-        //Staff List for SKill 3
-        List<Staff> staffList3 = new ArrayList<>();
-        staffList3.add(staff1);
-        staffList3.add(staff2);
+        staffList2.add(staff);
 
         //Set Skills List of Staff
         skill1.setStaffList(staffList1);
         skill2.setStaffList(staffList2);
-        skill3.setStaffList(staffList3);
 
         //Convert To Staff DTOs
-        dto1 = convertToDTO(staff1);
-        dto2 = convertToDTO(staff2);
-    }
-
-    @AfterEach
-    void close() throws Exception{
-        closeable.close();
+        staffDTO = convertToDTO(staff);
     }
 
     @Test
-    public void test01_When_Given_A_Request_For_All_Tools_Return_All(){
-        List<Staff> requestedListOfStaff = new ArrayList<>();
-        requestedListOfStaff.add(staff1);
-        requestedListOfStaff.add(staff2);
-        when(staffRepository.findAll()).thenReturn(requestedListOfStaff);
+    public void test01_When_Given_A_Staff_Return_StaffDTO(){
+        final StaffDTO newDTO = convertor.convert(staff);
+        assertNotNull(newDTO);
 
-        //StaffConvertor Mock Behaviour
-        when(staffConvertor.convert(staff1)).thenReturn(dto1);
-        when(staffConvertor.convert(staff2)).thenReturn(dto2);
+        //Assert Id
+        assertTrue(newDTO.getId() == staffDTO.getId());
 
-        //Define expected response objects
-        List<StaffDTO> expectedListOfStaff = new ArrayList<>();
-        expectedListOfStaff.add(dto1);
-        expectedListOfStaff.add(dto2);
+        //Assert Details
+        assertTrue(newDTO.getDetails().getId() == staffDTO.getDetails().getId());
+        assertTrue(newDTO.getDetails().getFirstName() == staffDTO.getDetails().getFirstName());
+        assertTrue(newDTO.getDetails().getSurname() == staffDTO.getDetails().getSurname());
+        assertTrue(newDTO.getDetails().getAddressFirstLine() == staffDTO.getDetails().getAddressFirstLine());
+        assertTrue(newDTO.getDetails().getAddressSecondLine() == staffDTO.getDetails().getAddressSecondLine());
+        assertTrue(newDTO.getDetails().getCounty() == staffDTO.getDetails().getCounty());
+        assertTrue(newDTO.getDetails().getPostcode() == staffDTO.getDetails().getPostcode());
 
-        List<StaffDTO> newStaff = staffService.getAllStaff();
+        //Assert Manager
+        assertTrue(newDTO.getManager().getId() == staffDTO.getManager().getId());
+        //Assert Manager User
+        assertTrue(newDTO.getManager().getUser().getId() == staffDTO.getManager().getUser().getId());
+        assertTrue(newDTO.getManager().getUser().getUsername() == staffDTO.getManager().getUser().getUsername());
+        assertTrue(newDTO.getManager().getUser().getEmail() == staffDTO.getManager().getUser().getEmail());
+        assertTrue(newDTO.getManager().getUser().getPassword() == staffDTO.getManager().getUser().getPassword());
+        //Assert Manager Role
+        assertTrue(newDTO.getManager().getUser().getRole().getId() == staffDTO.getManager().getUser().getRole().getId());
+        assertTrue(newDTO.getManager().getUser().getRole().getType() == staffDTO.getManager().getUser().getRole().getType());
+        //Assert Manager Details
+        assertTrue(newDTO.getManager().getDetails().getId() == staffDTO.getManager().getDetails().getId());
+        assertTrue(newDTO.getManager().getDetails().getFirstName() == staffDTO.getManager().getDetails().getFirstName());
+        assertTrue(newDTO.getManager().getDetails().getSurname() == staffDTO.getManager().getDetails().getSurname());
+        assertTrue(newDTO.getManager().getDetails().getAddressFirstLine() == staffDTO.getManager().getDetails().getAddressFirstLine());
+        assertTrue(newDTO.getManager().getDetails().getAddressSecondLine() == staffDTO.getManager().getDetails().getAddressSecondLine());
+        assertTrue(newDTO.getManager().getDetails().getCounty() == staffDTO.getManager().getDetails().getCounty());
+        assertTrue(newDTO.getManager().getDetails().getPostcode() == staffDTO.getManager().getDetails().getPostcode());
 
-        //Assert sizes are the same
-        assertEquals(newStaff.size(), requestedListOfStaff.size());
-
-        //Check elements are the same
-        for(int i = 0; i< newStaff.size(); i++){
-            assertEquals(newStaff.get(i), expectedListOfStaff.get(i));
+        //Assert Skills
+        assertTrue(newDTO.getSkills().size() == staffDTO.getSkills().size());
+        for(int i =0; i < newDTO.getSkills().size(); i++){
+            assertEquals(newDTO.getSkills().get(i), staffDTO.getSkills().get(i));
         }
+
+        //Assert User
+        assertTrue(newDTO.getUser().getId() == staffDTO.getUser().getId());
+        assertTrue(newDTO.getUser().getUsername() == staffDTO.getUser().getUsername());
+        assertTrue(newDTO.getUser().getEmail() == staffDTO.getUser().getEmail());
+        assertTrue(newDTO.getUser().getPassword() == staffDTO.getUser().getPassword());
+        assertTrue(newDTO.getUser().getRole().getId() == staffDTO.getUser().getRole().getId());
+        assertTrue(newDTO.getUser().getRole().getType() == staffDTO.getUser().getRole().getType());
     }
 }
