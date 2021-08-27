@@ -15,13 +15,13 @@ import java.util.List;
 public class StaffDTO {
     private long id;
 
-    @NotNull
+    @NotNull(message = "Personal details cannot be blank")
     private PersonalDetailsDTO details;
 
-    @NotNull
+    @NotNull(message = "User cannot be blank")
     private AppUserDTO user;
 
-    @NotNull
+    @NotNull(message = "Manager cannot be blank")
     private ManagerDTO manager;
 
     private List<SkillDTO> skills = new ArrayList<>();
