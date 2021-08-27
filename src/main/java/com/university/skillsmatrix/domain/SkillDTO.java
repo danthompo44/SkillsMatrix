@@ -1,6 +1,5 @@
 package com.university.skillsmatrix.domain;
 
-import com.university.skillsmatrix.entity.Staff;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

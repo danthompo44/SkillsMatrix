@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SkillDTOValidatorTest {
