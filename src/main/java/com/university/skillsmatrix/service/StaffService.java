@@ -6,6 +6,7 @@ import com.university.skillsmatrix.entity.Staff;
 import com.university.skillsmatrix.exceptions.ResourceNotFoundException;
 import com.university.skillsmatrix.repository.StaffRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -13,13 +14,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class StaffService {
     //dependencies
     private final StaffRepository staffRepository;
     private final StaffToDTOConvertor staffConvertor;
 
+    @Transactional
     public List<StaffDTO> getAllStaff(){
         Iterable<Staff> staffIterable = staffRepository.findAll();
         List<StaffDTO> staffDTOList = new ArrayList<>();

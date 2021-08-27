@@ -47,20 +47,4 @@ public class StaffToDTOConvertor {
         dto.setCategory(catConvertor.convert(s.getCategory()));
         return dto;
     }
-
-    private List<StaffDTO> addStaff(List<Staff> staffList){
-        List<StaffDTO> dtoList = new ArrayList<>();
-
-        for(Staff s: staffList){
-            StaffDTO dto = new StaffDTO();
-            dto.setId(s.getId());
-            dto.setUser(userConvertor.convert(s.getUser()));
-            dto.setManager(managerConvertor.convert(s.getManager()));
-            dto.setDetails(detailsConvertor.convert(s.getDetails()));
-            dto.setSkills(addSkills(s.getSkills()));
-
-            dtoList.add(dto);
-        }
-        return dtoList;
-    }
 }
