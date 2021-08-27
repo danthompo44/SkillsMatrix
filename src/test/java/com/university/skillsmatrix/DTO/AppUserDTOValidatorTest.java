@@ -2,8 +2,6 @@ package com.university.skillsmatrix.DTO;
 
 import com.university.skillsmatrix.domain.AppUserDTO;
 import com.university.skillsmatrix.domain.RoleDTO;
-import com.university.skillsmatrix.entity.Role;
-import lombok.ToString;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -21,6 +19,7 @@ public class AppUserDTOValidatorTest {
     private Validator validator;
     private AppUserDTO user;
     private RoleDTO role;
+
     private final String tooSmallString = "";
     private final String tooLargeString = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
     private final String validString = "Valid";

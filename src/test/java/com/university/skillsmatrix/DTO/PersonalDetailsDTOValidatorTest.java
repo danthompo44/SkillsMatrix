@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PersonalDetailsDTOValidatorTest {
     private Validator validator;
     private PersonalDetailsDTO detailsDTO;
+
     private final String tooSmallString = "";
     private final String tooLargeString = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
     private final String validString = "Valid";
