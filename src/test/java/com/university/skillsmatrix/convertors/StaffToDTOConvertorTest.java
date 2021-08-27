@@ -9,26 +9,24 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.MockitoAnnotations.openMocks;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
 
 public class StaffToDTOConvertorTest {
     private StaffToDTOConvertor convertor;
     private Staff staff;
     private StaffDTO staffDTO;
 
-    private PersonalDetails userDetails1 = new PersonalDetails();
-    private PersonalDetails userDetails2 = new PersonalDetails();
-    private Role staffRole = new Role();
-    private Role managerRole = new Role();
-    private AppUser user1 = new AppUser();
-    private AppUser user2 = new AppUser();
-    private Manager manager = new Manager();
-    private SkillCategory cat1 = new SkillCategory();
-    private SkillCategory cat2 = new SkillCategory();
-    private Skill skill1 = new Skill();
-    private Skill skill2 = new Skill();
+    private final PersonalDetails userDetails1 = new PersonalDetails();
+    private final PersonalDetails userDetails2 = new PersonalDetails();
+    private final Role staffRole = new Role();
+    private final Role managerRole = new Role();
+    private final AppUser user1 = new AppUser();
+    private final AppUser user2 = new AppUser();
+    private final Manager manager = new Manager();
+    private final SkillCategory cat1 = new SkillCategory();
+    private final SkillCategory cat2 = new SkillCategory();
+    private final Skill skill1 = new Skill();
+    private final Skill skill2 = new Skill();
 
     private StaffDTO convertToDTO(Staff staff){
         StaffDTO dto = new StaffDTO();
@@ -210,48 +208,48 @@ public class StaffToDTOConvertorTest {
         assertNotNull(newDTO);
 
         //Assert Id
-        assertTrue(newDTO.getId() == staffDTO.getId());
+        assertEquals(newDTO.getId(), staffDTO.getId());
 
         //Assert Details
-        assertTrue(newDTO.getDetails().getId() == staffDTO.getDetails().getId());
-        assertTrue(newDTO.getDetails().getFirstName() == staffDTO.getDetails().getFirstName());
-        assertTrue(newDTO.getDetails().getSurname() == staffDTO.getDetails().getSurname());
-        assertTrue(newDTO.getDetails().getAddressFirstLine() == staffDTO.getDetails().getAddressFirstLine());
-        assertTrue(newDTO.getDetails().getAddressSecondLine() == staffDTO.getDetails().getAddressSecondLine());
-        assertTrue(newDTO.getDetails().getCounty() == staffDTO.getDetails().getCounty());
-        assertTrue(newDTO.getDetails().getPostcode() == staffDTO.getDetails().getPostcode());
+        assertEquals(newDTO.getDetails().getId(), staffDTO.getDetails().getId());
+        assertSame(newDTO.getDetails().getFirstName(), staffDTO.getDetails().getFirstName());
+        assertSame(newDTO.getDetails().getSurname(), staffDTO.getDetails().getSurname());
+        assertSame(newDTO.getDetails().getAddressFirstLine(), staffDTO.getDetails().getAddressFirstLine());
+        assertSame(newDTO.getDetails().getAddressSecondLine(), staffDTO.getDetails().getAddressSecondLine());
+        assertSame(newDTO.getDetails().getCounty(), staffDTO.getDetails().getCounty());
+        assertSame(newDTO.getDetails().getPostcode(), staffDTO.getDetails().getPostcode());
 
         //Assert Manager
-        assertTrue(newDTO.getManager().getId() == staffDTO.getManager().getId());
+        assertEquals(newDTO.getManager().getId(), staffDTO.getManager().getId());
         //Assert Manager User
-        assertTrue(newDTO.getManager().getUser().getId() == staffDTO.getManager().getUser().getId());
-        assertTrue(newDTO.getManager().getUser().getUsername() == staffDTO.getManager().getUser().getUsername());
-        assertTrue(newDTO.getManager().getUser().getEmail() == staffDTO.getManager().getUser().getEmail());
-        assertTrue(newDTO.getManager().getUser().getPassword() == staffDTO.getManager().getUser().getPassword());
+        assertEquals(newDTO.getManager().getUser().getId(), staffDTO.getManager().getUser().getId());
+        assertSame(newDTO.getManager().getUser().getUsername(), staffDTO.getManager().getUser().getUsername());
+        assertSame(newDTO.getManager().getUser().getEmail(), staffDTO.getManager().getUser().getEmail());
+        assertSame(newDTO.getManager().getUser().getPassword(), staffDTO.getManager().getUser().getPassword());
         //Assert Manager Role
-        assertTrue(newDTO.getManager().getUser().getRole().getId() == staffDTO.getManager().getUser().getRole().getId());
-        assertTrue(newDTO.getManager().getUser().getRole().getType() == staffDTO.getManager().getUser().getRole().getType());
+        assertEquals(newDTO.getManager().getUser().getRole().getId(), staffDTO.getManager().getUser().getRole().getId());
+        assertSame(newDTO.getManager().getUser().getRole().getType(), staffDTO.getManager().getUser().getRole().getType());
         //Assert Manager Details
-        assertTrue(newDTO.getManager().getDetails().getId() == staffDTO.getManager().getDetails().getId());
-        assertTrue(newDTO.getManager().getDetails().getFirstName() == staffDTO.getManager().getDetails().getFirstName());
-        assertTrue(newDTO.getManager().getDetails().getSurname() == staffDTO.getManager().getDetails().getSurname());
-        assertTrue(newDTO.getManager().getDetails().getAddressFirstLine() == staffDTO.getManager().getDetails().getAddressFirstLine());
-        assertTrue(newDTO.getManager().getDetails().getAddressSecondLine() == staffDTO.getManager().getDetails().getAddressSecondLine());
-        assertTrue(newDTO.getManager().getDetails().getCounty() == staffDTO.getManager().getDetails().getCounty());
-        assertTrue(newDTO.getManager().getDetails().getPostcode() == staffDTO.getManager().getDetails().getPostcode());
+        assertEquals(newDTO.getManager().getDetails().getId(), staffDTO.getManager().getDetails().getId());
+        assertSame(newDTO.getManager().getDetails().getFirstName(), staffDTO.getManager().getDetails().getFirstName());
+        assertSame(newDTO.getManager().getDetails().getSurname(), staffDTO.getManager().getDetails().getSurname());
+        assertSame(newDTO.getManager().getDetails().getAddressFirstLine(), staffDTO.getManager().getDetails().getAddressFirstLine());
+        assertSame(newDTO.getManager().getDetails().getAddressSecondLine(), staffDTO.getManager().getDetails().getAddressSecondLine());
+        assertSame(newDTO.getManager().getDetails().getCounty(), staffDTO.getManager().getDetails().getCounty());
+        assertSame(newDTO.getManager().getDetails().getPostcode(), staffDTO.getManager().getDetails().getPostcode());
 
         //Assert Skills
-        assertTrue(newDTO.getSkills().size() == staffDTO.getSkills().size());
+        assertEquals(newDTO.getSkills().size(), staffDTO.getSkills().size());
         for(int i =0; i < newDTO.getSkills().size(); i++){
             assertEquals(newDTO.getSkills().get(i), staffDTO.getSkills().get(i));
         }
 
         //Assert User
-        assertTrue(newDTO.getUser().getId() == staffDTO.getUser().getId());
-        assertTrue(newDTO.getUser().getUsername() == staffDTO.getUser().getUsername());
-        assertTrue(newDTO.getUser().getEmail() == staffDTO.getUser().getEmail());
-        assertTrue(newDTO.getUser().getPassword() == staffDTO.getUser().getPassword());
-        assertTrue(newDTO.getUser().getRole().getId() == staffDTO.getUser().getRole().getId());
-        assertTrue(newDTO.getUser().getRole().getType() == staffDTO.getUser().getRole().getType());
+        assertEquals(newDTO.getUser().getId(), staffDTO.getUser().getId());
+        assertSame(newDTO.getUser().getUsername(), staffDTO.getUser().getUsername());
+        assertSame(newDTO.getUser().getEmail(), staffDTO.getUser().getEmail());
+        assertSame(newDTO.getUser().getPassword(), staffDTO.getUser().getPassword());
+        assertEquals(newDTO.getUser().getRole().getId(), staffDTO.getUser().getRole().getId());
+        assertSame(newDTO.getUser().getRole().getType(), staffDTO.getUser().getRole().getType());
     }
 }
