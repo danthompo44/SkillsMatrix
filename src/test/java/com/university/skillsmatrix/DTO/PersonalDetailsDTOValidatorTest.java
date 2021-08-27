@@ -178,4 +178,30 @@ public class PersonalDetailsDTOValidatorTest {
         detailsDTO.setPostcode(validString);
         testPostcode(detailsDTO, true);
     }
+
+    //Null tests
+    @Test
+    public void test19FirstNameIsNull(){
+        testFirstName(detailsDTO, false);
+    }
+    @Test
+    public void test20SurnameIsNull(){
+        testSurname(detailsDTO, false);
+    }
+    @Test
+    public void test21AddressFirstLineIsNull(){
+        testAddressOne(detailsDTO, false);
+    }
+    @Test
+    public void test22AddressSecondLineIsNull(){
+        testAddressTwo(detailsDTO, false);
+    }
+    @Test
+    public void test23CountyIsNull(){
+        testCounty(detailsDTO, false);
+    }
+    @Test
+    public void test24PostCodeIsNull(){
+        testPostcode(detailsDTO, false);
+    }
 }

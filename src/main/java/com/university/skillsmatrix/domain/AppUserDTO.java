@@ -3,6 +3,8 @@ package com.university.skillsmatrix.domain;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -21,7 +23,7 @@ public class AppUserDTO {
     private String password;
 
     @NotNull(message = "Email cannot be null")
-    @Size(min = 1, max = 50, message = "Email cannot exceed 50 characters")
+    @Email(message="{errors.invalid_email}")
     private String email;
 
     @NotNull(message = "Role cannot be null")
