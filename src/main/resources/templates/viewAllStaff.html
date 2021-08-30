@@ -6,28 +6,30 @@
 </head>
 <body>
     <div th:insert="fragments/header.html">
-        <p>View All Staff Page</p>
-        <table>
-            <tr>
-                <td>Staff ID</td>
-                <td>First Name</td>
-                <td>Surname</td>
-                <td>Manager</td>
-                <td>Skills</td>
-            </tr>
-            <tr th:each="staff: ${staffList}">
-                <td th:text="${staff.getId()}"></td>
-                <td th:text="${staff.getDetails().getFirstName()}"></td>
-                <td th:text="${staff.getDetails().getSurname()}"></td>
-                <td th:text="${staff.getManager().getDetails().getFirstName()}"></td>
-                <table>
-                    <tr th:each="skill: ${staff.getSkills()}">
-                        <td th:text="${skill.getName()}"></td>
-                    </tr>
-                </table>
-            </tr>
+        <div id="main-container">
+            <p>View All Staff Page</p>
+            <table>
+                <tr>
+                    <td>Staff ID</td>
+                    <td>First Name</td>
+                    <td>Surname</td>
+                    <td>Manager</td>
+                    <td>Skills</td>
+                </tr>
+                <tr th:each="staff: ${staffList}">
+                    <td th:text="${staff.getId()}"></td>
+                    <td th:text="${staff.getDetails().getFirstName()}"></td>
+                    <td th:text="${staff.getDetails().getSurname()}"></td>
+                    <td th:text="${staff.getManager().getDetails().getFirstName()}"></td>
+                    <table>
+                        <tr th:each="skill: ${staff.getSkills()}">
+                            <td th:text="${skill.getName()}"></td>
+                        </tr>
+                    </table>
+                </tr>
+            </table>
+        </div>
 
-        </table>
     </div>
 </body>
 </html>

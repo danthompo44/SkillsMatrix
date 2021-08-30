@@ -4,12 +4,11 @@
     <title>Home page</title>
 </head>
 <body>
-    <div class="container">
-        <div class="jumbotron jumbotron-fluid">
-            <h1>Skills Matrix</h1>
-            <h1>Home Page</h1>
-            <a th:if="${#httpServletRequest.remoteUser==null}" href="/login">Log in</a>
-        </div>
+    <div id="main-container">
+        <h1>Skills Matrix</h1>
+        <h1>Home Page</h1>
+        <a th:if="${#httpServletRequest.remoteUser==null}" href="/login">Log in</a>
     </div>
 </body>
+<footer th:replace="fragments/footer.html"></footer>
 </html>
