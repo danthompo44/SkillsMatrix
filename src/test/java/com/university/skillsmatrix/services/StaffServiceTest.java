@@ -30,22 +30,22 @@ public class StaffServiceTest {
     private StaffService staffService;
 
     //Dummy Objects
-    private PersonalDetails userDetails1 = new PersonalDetails();
-    private PersonalDetails userDetails2 = new PersonalDetails();
-    private PersonalDetails userDetails3 = new PersonalDetails();
-    private Role staffRole = new Role();
-    private Role managerRole = new Role();
-    private AppUser user1 = new AppUser();
-    private AppUser user2 = new AppUser();
-    private AppUser user3 = new AppUser();
-    private Manager manager = new Manager();
-    private SkillCategory cat1 = new SkillCategory();
-    private SkillCategory cat2 = new SkillCategory();
-    private Skill skill1 = new Skill();
-    private Skill skill2 = new Skill();
-    private Skill skill3 = new Skill();
-    private Staff staff1 = new Staff();
-    private Staff staff2 = new Staff();
+    private final PersonalDetails userDetails1 = new PersonalDetails();
+    private final PersonalDetails userDetails2 = new PersonalDetails();
+    private final PersonalDetails userDetails3 = new PersonalDetails();
+    private final Role staffRole = new Role();
+    private final Role managerRole = new Role();
+    private final AppUser user1 = new AppUser();
+    private final AppUser user2 = new AppUser();
+    private final AppUser user3 = new AppUser();
+    private final Manager manager = new Manager();
+    private final SkillCategory cat1 = new SkillCategory();
+    private final SkillCategory cat2 = new SkillCategory();
+    private final Skill skill1 = new Skill();
+    private final Skill skill2 = new Skill();
+    private final Skill skill3 = new Skill();
+    private final Staff staff1 = new Staff();
+    private final Staff staff2 = new Staff();
     private StaffDTO dto1 = null;
     private StaffDTO dto2 = null;
 

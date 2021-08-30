@@ -1,4 +1,4 @@
-package com.university.skillsmatrix.convertors;
+package com.university.skillsmatrix.convertors.staff;
 
 import com.university.skillsmatrix.convertor.staff.StaffToDTOConvertor;
 import com.university.skillsmatrix.domain.*;

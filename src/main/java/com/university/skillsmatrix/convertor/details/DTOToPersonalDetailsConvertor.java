@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class DTOToPersonalDetailsConvertor {
     public PersonalDetails convert(PersonalDetailsDTO dto){
         PersonalDetails d = new PersonalDetails();
-        d.setId(d.getId());
+        d.setId(dto.getId());
         d.setFirstName(dto.getFirstName());
         d.setSurname(dto.getSurname());
         d.setAddressFirstLine(dto.getAddressFirstLine());
