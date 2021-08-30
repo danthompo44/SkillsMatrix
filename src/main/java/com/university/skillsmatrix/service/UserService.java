@@ -1,10 +1,14 @@
 package com.university.skillsmatrix.service;
 
 import com.university.skillsmatrix.entity.AppUser;
+import com.university.skillsmatrix.exceptions.ResourceNotFoundException;
 import com.university.skillsmatrix.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -41,5 +45,26 @@ public class UserService implements UserDetailsService {
         Collection<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList(userRoles);
 
         return authorities;
+    }
+
+    public String getUserName(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(!(authentication instanceof AnonymousAuthenticationToken)) {
+            return authentication.getName();
+        }
+        throw new ResourceNotFoundException("Error", "No user is present");
+    }
+
+    public AppUser getAppUser(){
+        return userRepository.getUserByUsername(getUserName());
+    }
+
+    public boolean isManager(){
+        for(int i = 0; i < getAppUser().getRoles().size(); i++){
+            if(getAppUser().getRoles().get(i).getType().equals("ROLE_ADMIN")){
+                return true;
+            }
+        }
+        return false;
     }
 }

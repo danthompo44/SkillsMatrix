@@ -1,7 +1,9 @@
 package com.university.skillsmatrix.service;
 
 import com.university.skillsmatrix.convertor.staff.StaffToDTOConvertor;
+import com.university.skillsmatrix.domain.ManagerDTO;
 import com.university.skillsmatrix.domain.StaffDTO;
+import com.university.skillsmatrix.entity.Manager;
 import com.university.skillsmatrix.entity.Staff;
 import com.university.skillsmatrix.exceptions.ResourceNotFoundException;
 import com.university.skillsmatrix.repository.StaffRepository;
@@ -41,6 +43,16 @@ public class StaffService {
         }
         else{
             throw new ResourceNotFoundException("Staff member is not found", "Enter a valid id");
+        }
+    }
+
+    public StaffDTO getStaffByAppUserId(Long id){
+        Optional<Staff> staff = Optional.ofNullable(staffRepository.findStaffByUserId(id));
+        if(staff.isPresent()){
+            return staffConvertor.convert(staff.get());
+        }
+        else{
+            throw new ResourceNotFoundException("Manager is not found", "Enter a valid id");
         }
     }
 }
