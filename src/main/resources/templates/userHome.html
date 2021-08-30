@@ -4,14 +4,13 @@
 <head th:replace="fragments/head.html">
   <title>View All Tools</title>
 </head>
-<body>
-<div th:insert="fragments/header"></div>
-<div id="main-container">
-  Logged user: <span sec:authentication="name">user name?</span>
-  Roles: <span sec:authentication="principal.authorities">roles?</span>
+  <body>
+    <div th:insert="fragments/header"></div>
+    <div id="main-container">
+      Logged user: <span sec:authentication="name">user name?</span>
+      Roles: <span sec:authentication="principal.authorities">roles?</span>
 
-</div>
-
-</body>
-<footer th:replace="fragments/footer.html"></footer>
+    </div>
+    <footer th:replace="fragments/footer.html"></footer>
+  </body>
 </html>

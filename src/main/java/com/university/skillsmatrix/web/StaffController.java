@@ -15,7 +15,6 @@ public class StaffController {
 
     @GetMapping("")
     public String getAllStaff(Model model){
-        System.out.println("Get All Staff");
         model.addAttribute("staffList", staffService.getAllStaff());
         return "viewAllStaff";
     }
