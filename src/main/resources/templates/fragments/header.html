@@ -1,0 +1,17 @@
+<div class="container" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <div class="btn-group">
+        <a href="/">Home&nbsp;</a>
+        <!--Tool menu -->
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Tools
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="/tools ">View All Tools</a>
+            <span sec:authorize="hasRole('ADMIN')">
+ <a class="dropdown-item" href="/tools/addPage">Add a Tool</a>
+ </span>
+        </div>
+    </div>
+    <!-- Logout link -->
+    <a sec:authorize="isAuthenticated()" href="/logout">Logout</a>
+</div>

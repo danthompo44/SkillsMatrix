@@ -15,7 +15,7 @@ public class AppUserToDTOConvertor {
         dto.setUsername(u.getUsername());
         dto.setEmail(u.getEmail());
         dto.setPassword(u.getPassword());
-        dto.setRole(roleConvertor.convert(u.getRole()));
+//        dto.setRole(roleConvertor.convert(u.getRole()));
 
         return dto;
     }

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html">
+    <title>Home page</title>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <h1>Tool Hire 247</h1>
+        <form th:action = "@{/login}" method = "post">
+            <div>
+                <label>User Name:
+                    <input type = "text" name = "username" autofocus/>
+                </label>
+            </div>
+            <div>
+                <label>Password:
+                    <input type = "password" name = "password"/>
+                </label>
+            </div>
+            <em th:if="${error!=null}" th:text="${error.toString()}"></em>
+            <input type = "submit" value = "Sign In"/>
+        </form>
+    </div>
+</div>
+</body>

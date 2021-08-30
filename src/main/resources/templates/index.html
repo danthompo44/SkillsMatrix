@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html">
+    <title>Home page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid">
+            <h1>Skills Matrix</h1>
+            <h1>Home Page</h1>
+            <a th:if="${#httpServletRequest.remoteUser==null}" href="/login">Log in</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments/head.html">
+  <title>View All Tools</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <h1>User main page</h1>
+
+    Logged user: <span sec:authentication="name">user name?</span>
+    Roles: <span sec:authentication="principal.authorities">roles?</span>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -38,7 +38,7 @@ public class ManagerToDTOConvertorTest {
         user.setId(2);
         user.setUsername("Username");
         user.setEmail("email@email.com");
-        user.setRole(role);
+//        user.setRole(role);
 
         manager.setId(1);
         manager.setUser(user);
@@ -64,7 +64,7 @@ public class ManagerToDTOConvertorTest {
         assertEquals(manager.getUser().getUsername(), managerDTO.getUser().getUsername());
         assertEquals(manager.getUser().getEmail(), managerDTO.getUser().getEmail());
         assertEquals(manager.getUser().getPassword(), managerDTO.getUser().getPassword());
-        assertEquals(manager.getUser().getRole().getId(), managerDTO.getUser().getRole().getId());
-        assertEquals(manager.getUser().getRole().getType(), managerDTO.getUser().getRole().getType());
+//        assertEquals(manager.getUser().getRole().getId(), managerDTO.getUser().getRole().getId());
+//        assertEquals(manager.getUser().getRole().getType(), managerDTO.getUser().getRole().getType());
     }
 }

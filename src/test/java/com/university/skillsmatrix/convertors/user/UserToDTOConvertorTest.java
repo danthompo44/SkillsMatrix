@@ -25,7 +25,7 @@ public class UserToDTOConvertorTest {
         user.setUsername("Username");
         user.setEmail("email@email.com");
         user.setPassword("password");
-        user.setRole(role);
+//        user.setRole(role);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class UserToDTOConvertorTest {
         assertEquals(user.getEmail(), dto.getEmail());
         assertEquals(user.getPassword(), dto.getPassword());
         //Assert Role
-        assertEquals(user.getRole().getId(), dto.getRole().getId());
-        assertEquals(user.getRole().getType(), dto.getRole().getType());
+//        assertEquals(user.getRole().getId(), dto.getRole().getId());
+//        assertEquals(user.getRole().getType(), dto.getRole().getType());
     }
 }

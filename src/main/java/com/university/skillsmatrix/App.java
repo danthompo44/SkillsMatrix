@@ -26,13 +26,13 @@ public class App {
         user.setUsername("Dave");
         user.setPassword("password");
         user.setEmail("email@email.com");
-        user.setRole(userRole);
+//        user.setRole(userRole);
 
         AppUser manUser = new AppUser();
         manUser.setId(16);
         manUser.setUsername("Manager");
         manUser.setEmail("email2@email.com");
-        manUser.setRole(managerRole);
+//        manUser.setRole(managerRole);
         manUser.setPassword("password");
 
         PersonalDetails userDetails1 = new PersonalDetails();

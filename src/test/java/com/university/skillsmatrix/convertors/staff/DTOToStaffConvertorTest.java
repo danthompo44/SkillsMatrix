@@ -59,7 +59,7 @@ public class DTOToStaffConvertorTest {
         user.setUsername(dto.getUsername());
         user.setEmail(dto.getEmail());
         user.setPassword(dto.getPassword());
-        user.setRole(convertRole(dto.getRole()));
+//        user.setRole(convertRole(dto.getRole()));
 
         return user;
     }
@@ -228,8 +228,8 @@ public class DTOToStaffConvertorTest {
         assertSame(newStaff.getManager().getUser().getEmail(), staff.getManager().getUser().getEmail());
         assertSame(newStaff.getManager().getUser().getPassword(), staff.getManager().getUser().getPassword());
         //Assert Manager Role
-        assertEquals(newStaff.getManager().getUser().getRole().getId(), staff.getManager().getUser().getRole().getId());
-        assertSame(newStaff.getManager().getUser().getRole().getType(), staff.getManager().getUser().getRole().getType());
+//        assertEquals(newStaff.getManager().getUser().getRole().getId(), staff.getManager().getUser().getRole().getId());
+//        assertSame(newStaff.getManager().getUser().getRole().getType(), staff.getManager().getUser().getRole().getType());
         //Assert Manager Details
         assertEquals(newStaff.getManager().getDetails().getId(), staff.getManager().getDetails().getId());
         assertSame(newStaff.getManager().getDetails().getFirstName(), staff.getManager().getDetails().getFirstName());
@@ -244,8 +244,8 @@ public class DTOToStaffConvertorTest {
         assertSame(newStaff.getUser().getUsername(), staff.getUser().getUsername());
         assertSame(newStaff.getUser().getEmail(), staff.getUser().getEmail());
         assertSame(newStaff.getUser().getPassword(), staff.getUser().getPassword());
-        assertEquals(newStaff.getUser().getRole().getId(), staff.getUser().getRole().getId());
-        assertSame(newStaff.getUser().getRole().getType(), staff.getUser().getRole().getType());
+//        assertEquals(newStaff.getUser().getRole().getId(), staff.getUser().getRole().getId());
+//        assertSame(newStaff.getUser().getRole().getType(), staff.getUser().getRole().getType());
     }
 
 }

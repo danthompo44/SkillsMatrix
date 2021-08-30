@@ -5,6 +5,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name="App_user")
 @Table(name = "app_user")
@@ -29,9 +31,12 @@ public class AppUser {
     @Column(name = "email")
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "role_id")
-    private Role role;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name="app_user_role",
+            joinColumns= @JoinColumn( name="user_id"),
+            inverseJoinColumns=@JoinColumn(name="role_id")
+    )
+    private List<Role> roles = new ArrayList<>();
 
     public String toString(){
         return String.format("%d, %s, %s, %s", id, username, password, email);

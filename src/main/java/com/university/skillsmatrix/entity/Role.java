@@ -5,6 +5,8 @@ import lombok.Setter;
 import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "Role")
 @Table(name = "role")
@@ -20,4 +22,7 @@ public class Role {
     @NotNull
     @Column(name = "type")
     private String type;
+
+    @ManyToMany(mappedBy = "roles")
+    private List<AppUser> users = new ArrayList<>();
  }

@@ -58,7 +58,7 @@ public class StaffToDTOConvertorTest {
         dto.setUsername(u.getUsername());
         dto.setEmail(u.getEmail());
         dto.setPassword(u.getPassword());
-        dto.setRole(convertRole(u.getRole()));
+//        dto.setRole(convertRole(u.getRole()));
 
         return dto;
     }
@@ -142,14 +142,14 @@ public class StaffToDTOConvertorTest {
         user1.setUsername("Username 1");
         user1.setEmail("email1@email.com");
         user1.setPassword("password");
-        user1.setRole(managerRole);
+//        user1.setRole(managerRole);
 
         //Set AppUser 2
         user2.setId(104);
         user2.setUsername("Username 2");
         user2.setEmail("email2@email.com");
         user2.setPassword("password");
-        user2.setRole(staffRole);
+//        user2.setRole(staffRole);
 
         //Set Manager
         manager.setId(72);
