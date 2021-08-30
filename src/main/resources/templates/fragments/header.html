@@ -1,17 +1,32 @@
-<div class="container" xmlns:sec="http://www.w3.org/1999/xhtml">
-    <div class="btn-group">
-        <a href="/">Home&nbsp;</a>
-        <!--Tool menu -->
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Tools
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="/tools ">View All Tools</a>
-            <span sec:authorize="hasRole('ADMIN')">
- <a class="dropdown-item" href="/tools/addPage">Add a Tool</a>
- </span>
+<div id="nav-container" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <nav id="main-nav">
+        <div class="nav-flex">
+            <div id="nav-title">
+                <h1>Skills Matrix</h1>
+            </div>
         </div>
-    </div>
-    <!-- Logout link -->
-    <a sec:authorize="isAuthenticated()" href="/logout">Logout</a>
+        <ul class="nav-links">
+            <li class="nav-link"><a href="/mySkills">My Skills</a></li>
+            <li class="nav-link"><a href="/details">My Details</a></li>
+            <span class="nav-links" sec:authorize="hasRole('ADMIN')">
+                <li class="nav-link"><a href="/skills">All Skills</a></li>
+                <li class="nav-link"><a href="/category">Categories</a></li>
+                <li class="nav-link"><a href="/staff">My Staff</a></li>
+            </span>
+            <li class="nav-link"><a sec:authorize="isAuthenticated()" href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+<!--    <div class="btn-group">-->
+<!--        &lt;!&ndash;Tool menu &ndash;&gt;-->
+<!--        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--            Tools-->
+<!--        </button>-->
+<!--        <div class="dropdown-menu">-->
+<!--            <a class="dropdown-item" href="/tools ">View All Tools</a>-->
+<!--            <span sec:authorize="hasRole('ADMIN')">-->
+<!--                <a class="dropdown-item" href="/tools/addPage">Add a Tool</a>-->
+<!--            </span>-->
+<!--        </div>-->
+<!--    </div>-->
 </div>

@@ -8,9 +8,6 @@
 <body>
 <div th:insert="fragments/header"></div>
 <div id="main-container">
-  <div class="jumbotron jumbotron-fluid">
-    <h1>Admin main page</h1>
-  </div>
   Logged user: <span sec:authentication="name">user name?</span>
   Roles: <span sec:authentication="principal.authorities">roles?</span>
 
