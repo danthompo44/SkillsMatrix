@@ -123,3 +123,11 @@ body {
     color: whitesmoke;
     margin: 0 10px;
 }
+
+/*ViewMyDetails Style*/
+#details-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}

@@ -27,17 +27,13 @@ public class DetailsController {
     @GetMapping("")
     @PreAuthorize("isAuthenticated()")
     public String getDetailsById(Model model){
-        System.out.println(userService.isManager());
         if(userService.isManager()){
-            System.out.println(detailsService);
-            System.out.println(managerService.getManagerByAppUserId(userService.getAppUser().getId()).getDetails().getFirstName());
+            model.addAttribute("details", managerService.getManagerByAppUserId(userService.getAppUser().getId()).getDetails());
             // Query Manager Service for their details
         } else  {
-            System.out.println(staffService.getStaffByAppUserId(userService.getAppUser().getId()).getDetails().getFirstName());
+            model.addAttribute("details", staffService.getStaffByAppUserId(userService.getAppUser().getId()).getDetails());
             //Query Staff Service for their details
         }
-//        model.addAttribute("myDetails", detailsService.getDetailsById(userService.getAppUser().get));
-
         return "viewMyDetails";
     }
 }

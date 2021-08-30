@@ -11,12 +11,15 @@
   <div id="margin-container">
     <div id="page-title">
       <h1>My Details</h1>
-      <table>
-        <tr>
-<!--          <td th:text="${myDetails.getFirstName()}"></td>-->
-        </tr>
-      </table>
     </div>
+        <div id="details-container">
+            <p th:text="${details.getFirstName()}"></p>
+            <p th:text="${details.getSurname()}"></p>
+            <p th:text="${details.getAddressFirstLine()}"></p>
+            <p th:text="${details.getAddressSecondLine()}"></p>
+            <p th:text="${details.getCounty()}"></p>
+            <p th:text="${details.getPostcode()}"></p>
+        </div>
   </div>
 </div>
 <footer th:replace="fragments/footer.html"></footer>
