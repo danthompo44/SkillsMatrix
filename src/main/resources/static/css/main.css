@@ -27,11 +27,22 @@ body {
     color: #c0c0c0;
 }
 
-.margin-container {
+#margin-container {
     margin: 20px 50px;
     justify-content: center;
     display: flex;
     flex-direction: column;
+}
+
+#page-title{
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+#page-title h1 {
+    text-align: center;
+    color: #ffffff;
 }
 
 /*Header Styles*/

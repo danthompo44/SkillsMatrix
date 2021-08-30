@@ -8,9 +8,10 @@
 <body>
   <div th:insert="fragments/header"></div>
   <div id="main-container">
-    Logged user: <span sec:authentication="name">user name?</span>
-    Roles: <span sec:authentication="principal.authorities">roles?</span>
-
+    <div id="margin-container">
+      Logged user: <span sec:authentication="name">user name?</span>
+      Roles: <span sec:authentication="principal.authorities">roles?</span>
+    </div>
   </div>
   <footer th:replace="fragments/footer.html"></footer>
 </body>

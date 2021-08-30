@@ -5,21 +5,23 @@
 </head>
 <body>
     <div id="main-container">
-        <h1>Tool Hire 247</h1>
-        <form th:action = "@{/login}" method = "post">
-            <div>
-                <label>User Name:
-                    <input type = "text" name = "username" autofocus/>
-                </label>
-            </div>
-            <div>
-                <label>Password:
-                    <input type = "password" name = "password"/>
-                </label>
-            </div>
-            <em th:if="${error!=null}" th:text="${error.toString()}"></em>
-            <input type = "submit" value = "Sign In"/>
-        </form>
+        <div id="margin-container">
+            <h1>Tool Hire 247</h1>
+            <form th:action = "@{/login}" method = "post">
+                <div>
+                    <label>User Name:
+                        <input type = "text" name = "username" autofocus/>
+                    </label>
+                </div>
+                <div>
+                    <label>Password:
+                        <input type = "password" name = "password"/>
+                    </label>
+                </div>
+                <em th:if="${error!=null}" th:text="${error.toString()}"></em>
+                <input type = "submit" value = "Sign In"/>
+            </form>
+        </div>
     </div>
     <footer th:replace="fragments/footer.html"></footer>
 </body>
