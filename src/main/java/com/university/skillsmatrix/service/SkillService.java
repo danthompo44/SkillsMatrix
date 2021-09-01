@@ -47,4 +47,8 @@ public class SkillService {
         skill = skillRepository.save(skill);
         return skillToDTOConvertor.convert(skill);
     }
+
+    public void deleteSkillById(Long id){
+        skillRepository.deleteById(id);
+    }
 }

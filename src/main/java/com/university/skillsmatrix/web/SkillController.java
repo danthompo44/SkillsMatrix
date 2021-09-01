@@ -1,10 +1,12 @@
 package com.university.skillsmatrix.web;
 
+import com.university.skillsmatrix.domain.SkillCategoryDTO;
 import com.university.skillsmatrix.domain.SkillDTO;
 import com.university.skillsmatrix.exceptions.ResourceNotFoundException;
 import com.university.skillsmatrix.service.CategoryService;
 import com.university.skillsmatrix.service.SkillService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/skill")//localhost:8081/skills
@@ -25,7 +29,9 @@ public class SkillController {
     @GetMapping("/admin/all")
     public String getAllSkills(Model model){
         model.addAttribute("skillList", skillService.getAllSkills());
+        model.addAttribute("skillCategory", categoryService.getAllCategories());
         model.addAttribute("skillDTO", new SkillDTO());
+        System.out.println(categoryService.getAllCategories());
         return "viewAllSkills";
     }
 
@@ -53,6 +59,30 @@ public class SkillController {
             return "viewASkill";
         }
         skillService.save(dto);
+        return getAllSkills(model);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/admin/delete/{id}")
+    public String deleteSkill(@PathVariable Long id, Model model){
+        try {
+            skillService.deleteSkillById(id);
+        } catch (DataIntegrityViolationException ex) {
+            model.addAttribute("deletionError", "Unable to delete record");
+        }
+
+        return getAllSkills(model);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/admin/add")
+    public String insertSkill(@Valid SkillDTO skillDTO,
+                                 BindingResult result,
+                                 Model model) {
+        if(result.hasErrors()){
+            return "viewAllSkills";
+        }
+        skillService.save(skillDTO);
         return getAllSkills(model);
     }
 }

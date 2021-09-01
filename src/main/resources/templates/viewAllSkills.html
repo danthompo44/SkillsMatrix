@@ -29,12 +29,20 @@
                 </tr>
             </table>
             <form th:action="@{/skill/admin/add}" th:object="${skillDTO}" method="post">
-                Category Name
                 <p>
-                    <input type="text" th:field="*{name}" placeholder="Category Name"/>
+                    Skill Name
+                    <input type="text" th:field="*{name}" placeholder="Description"/>
                     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
                 </p>
-                <input type="submit" value="Add Category">
+                <p>
+                    Category
+                    <select th:field="${skillDTO.category.id}">
+                        <option th:each="category : ${skillCategory}"
+                                th:value="${category.id}"
+                                th:utext="${category.description}"></option>
+                    </select>
+                </p>
+                <input type="submit" value="Add Skill">
             </form>
         </div>
     </div>
