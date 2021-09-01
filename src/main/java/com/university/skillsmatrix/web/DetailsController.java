@@ -7,11 +7,13 @@ import com.university.skillsmatrix.service.ManagerService;
 import com.university.skillsmatrix.service.StaffService;
 import com.university.skillsmatrix.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -55,5 +57,12 @@ public class DetailsController {
             model.addAttribute("details", staffService.getStaffByAppUserId(userService.getAppUser().getId()).getDetails());
             //Query Staff Service for their details
         }
+    }
+
+    @PostMapping("/admin/delete/{id}")
+    @PreAuthorize("isAuthenticated")
+    public String deleteDetails(@PathVariable Long id, Model model) {
+        detailsService.removeDetails(id);
+        return viewDetails(model);
     }
 }

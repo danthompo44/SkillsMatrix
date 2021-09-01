@@ -33,4 +33,17 @@ public class DetailsService {
         repository.save(details);
         return detailsToDTOConvertor.convert(details);
     }
+
+    public void removeDetails(Long id){
+        Optional<PersonalDetails> d = repository.findById(id);
+        if(d.isPresent()){
+            PersonalDetails details = d.get();
+            details.setFirstName("");
+            details.setSurname("");
+            details.setAddressFirstLine("");
+            details.setAddressSecondLine("");
+            details.setCounty("");
+            details.setPostcode("");
+        }
+    }
 }
