@@ -12,14 +12,47 @@
     <div id="page-title">
       <h1>My Details</h1>
     </div>
-        <div id="details-container">
-            <p th:text="${details.getFirstName()}"></p>
-            <p th:text="${details.getSurname()}"></p>
-            <p th:text="${details.getAddressFirstLine()}"></p>
-            <p th:text="${details.getAddressSecondLine()}"></p>
-            <p th:text="${details.getCounty()}"></p>
-            <p th:text="${details.getPostcode()}"></p>
-        </div>
+      <div id="details-container">
+          <form th:action="@{/details/update/{id}(id=${details.id})}" method="post">
+              <p>
+                  First Name
+                  <input type="text" th:field="*{details.firstName}"  name="firstName" placeholder="First Name"/>
+                  <span th:if="${#fields.hasErrors('details.firstName')}"
+                        th:errors="*{details.firstName}" th:errorclass="fieldError"></span>
+              </p>
+              <p>
+                  Surname
+                  <input type="text" th:field="*{details.surname}"  name="surname" placeholder="Surname"/>
+                  <span th:if="${#fields.hasErrors('details.surname')}"
+                        th:errors="*{details.surname}" th:errorclass="fieldError"></span>
+              </p>
+              <p>
+                  Address First Line
+                  <input type="text" th:field="*{details.addressFirstLine}"  name="addressFirstLine" placeholder="Address First Line"/>
+                  <span th:if="${#fields.hasErrors('details.addressFirstLine')}"
+                        th:errors="*{details.addressFirstLine}" th:errorclass="fieldError"></span>
+              </p>
+              <p>
+                  Address Second Line
+                  <input type="text" th:field="*{details.addressSecondLine}"  name="addressSecondLine" placeholder="Address Second Line"/>
+                  <span th:if="${#fields.hasErrors('details.addressSecondLine')}"
+                        th:errors="*{details.addressSecondLine}" th:errorclass="fieldError"></span>
+              </p>
+              <p>
+                  County
+                  <input type="text" th:field="*{details.county}"  name="county" placeholder="County"/>
+                  <span th:if="${#fields.hasErrors('details.county')}"
+                        th:errors="*{details.county}" th:errorclass="fieldError"></span>
+              </p>
+              <p>
+                  Postcode
+                  <input type="text" th:field="*{details.postcode}"  name="postcode" placeholder="Postcode"/>
+                  <span th:if="${#fields.hasErrors('details.postcode')}"
+                        th:errors="*{details.postcode}" th:errorclass="fieldError"></span>
+              </p>
+              <input type="submit" value="Update Details">
+          </form>
+      </div>
   </div>
 </div>
 <footer th:replace="fragments/footer.html"></footer>

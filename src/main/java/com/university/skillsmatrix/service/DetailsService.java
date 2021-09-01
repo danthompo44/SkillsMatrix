@@ -1,5 +1,6 @@
 package com.university.skillsmatrix.service;
 
+import com.university.skillsmatrix.convertor.details.DTOToPersonalDetailsConvertor;
 import com.university.skillsmatrix.convertor.details.PersonalDetailsToDTOConvertor;
 import com.university.skillsmatrix.domain.PersonalDetailsDTO;
 import com.university.skillsmatrix.entity.PersonalDetails;
@@ -14,6 +15,7 @@ import java.util.Optional;
 public class DetailsService {
     private final PersonalDetailsRepository repository;
     private final PersonalDetailsToDTOConvertor detailsToDTOConvertor;
+    private final DTOToPersonalDetailsConvertor dtoToDetailsConvertor;
 
     public PersonalDetailsDTO getDetailsById(Long id){
         Optional<PersonalDetails> details = repository.findById(id);
@@ -24,5 +26,11 @@ public class DetailsService {
         else{
             throw new ResourceNotFoundException("Staff member is not found", "Enter a valid id");
         }
+    }
+
+    public PersonalDetailsDTO save(PersonalDetailsDTO dto){
+        PersonalDetails details = dtoToDetailsConvertor.convert(dto);
+        repository.save(details);
+        return detailsToDTOConvertor.convert(details);
     }
 }
