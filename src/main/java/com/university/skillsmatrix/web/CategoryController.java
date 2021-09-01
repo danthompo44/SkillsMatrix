@@ -26,6 +26,7 @@ public class CategoryController {
     @GetMapping("/admin/all")
     public String getAllCategories(Model model){
         model.addAttribute("categoryList", categoryService.getAllCategories());
+        model.addAttribute("categoryDTO", new SkillCategoryDTO());
         return "viewAllCategories";
     }
 
@@ -59,13 +60,28 @@ public class CategoryController {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/delete/{id}")
     public String deleteCategory(@PathVariable Long id, Model model){
-        System.out.println("Deletion of a category");
         try {
             categoryService.deleteCategoryById(id);
         } catch (DataIntegrityViolationException ex) { //Catch if deletion fails due to constraint
             model.addAttribute("deletionError", "Unable to delete record");
         }
 
+        return getAllCategories(model);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/admin/add")
+    public String insertCategory(@Valid SkillCategoryDTO categoryDTO,
+                                 BindingResult result,
+                                 Model model) {
+        System.out.println("Insert A Category");
+        if(result.hasErrors()){
+            return "viewAllCategories";
+        }
+
+
+
+        categoryService.save(categoryDTO);
         return getAllCategories(model);
     }
 }

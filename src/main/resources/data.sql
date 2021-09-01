@@ -1,6 +1,7 @@
 insert into skill_category(description) values ('Software');
 insert into skill_category(description) values ('People');
 insert into skill_category(description) values ('Networking');
+insert into skill_category(description) values ('Management');
 create sequence skill_category_sequence_id  start  with (select max(id) + 1 from skill_category);
 
 insert into skill (name, category_Id) values ('Java', 1);
