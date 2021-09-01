@@ -19,6 +19,11 @@ body {
     flex-direction: column;
 }
 
+.underlined-link{
+    text-decoration: underline;
+    color: lightskyblue;
+}
+
 #main-container {
     /* does flex setting for IE */
     -ms-flex: 1 1 auto;
@@ -130,4 +135,15 @@ body {
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
+}
+
+/*Categories CSS*/
+#all-categories-container{
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+}
+
+#categories-table td {
+    padding: 5px;
 }

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -15,7 +16,7 @@ import javax.validation.constraints.Size;
 public class SkillCategoryDTO {
     private long id;
 
-    @NotNull(message = "Category description cannot be null")
+    @NotEmpty(message = "Category description cannot be null")
     @Size(min=1, max = 50, message = "Description no more than 50 characters")
     private String description;
 }

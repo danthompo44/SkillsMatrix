@@ -12,6 +12,22 @@
     <div id="page-title">
       <h1>All Categories</h1>
     </div>
+    <div id="all-categories-container">
+      <table id="categories-table">
+        <tr>
+          <td>Name</td>
+        </tr>
+        <tr th:each="category: ${categoryList}">
+          <td th:text="${category.description}"></td>
+          <td sec:authorize="hasRole('ADMIN')">
+            <a class="underlined-link" th:href="@{/category/admin/editPage/{id}(id=${category.getId()})}">Edit</a>
+          </td>
+          <td sec:authorize="hasRole('ADMIN')">
+            <a class="underlined-link" th:href="@{/category/admin/delete/{id}(id=${category.getId()})}">Delete</a>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>
 <footer th:replace="fragments/footer.html"></footer>

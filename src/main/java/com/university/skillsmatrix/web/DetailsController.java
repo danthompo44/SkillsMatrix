@@ -33,7 +33,7 @@ public class DetailsController {
         return "viewMyDetails";
     }
 
-    @PostMapping("/update/{id}")
+    @PostMapping("/admin/update/{id}")
     @PreAuthorize("isAuthenticated()")
     public String updateDetails(@Valid PersonalDetailsDTO dto,
                                 BindingResult result,
