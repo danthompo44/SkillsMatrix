@@ -147,3 +147,14 @@ body {
 #categories-table td {
     padding: 5px;
 }
+
+/*Skills CSS*/
+#all-skills-container{
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+}
+
+#skills-table{
+    padding: 5px;
+}

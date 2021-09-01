@@ -74,13 +74,9 @@ public class CategoryController {
     public String insertCategory(@Valid SkillCategoryDTO categoryDTO,
                                  BindingResult result,
                                  Model model) {
-        System.out.println("Insert A Category");
         if(result.hasErrors()){
             return "viewAllCategories";
         }
-
-
-
         categoryService.save(categoryDTO);
         return getAllCategories(model);
     }

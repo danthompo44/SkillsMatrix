@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html">
+  <title>View A Skill</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div id="main-container">
+  <div id="margin-container">
+    <div id="page-title">
+      <h1>View A Skill</h1>
+    </div>
+    <form th:action="@{/skill/admin/update/{id}(id=${skill.id})}" method="post">
+      <p>
+        Description
+        <input type="text" th:field="*{skill.name}" name="name" placeholder="Name"/>
+        <span th:if="${#fields.hasErrors('skill.name')}"
+              th:errors="*{skill.name}" th:errorclass="fieldError"></span>
+      </p>
+      <p>
+        Category
+        <select th:field="${skill.category.id}">
+          <option th:each="category : ${skillCategory}"
+                  th:value="*{category.id}"
+                  th:utext="*{category.description}"></option>
+        </select>
+      </p>
+      <input type="submit" value="Update">
+    </form>
+  </div>
+</div>
+<footer th:replace="fragments/footer.html"></footer>
+</body>
+</html>

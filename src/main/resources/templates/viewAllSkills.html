@@ -3,17 +3,42 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/head.html">
-    <title>All Skills</title>
+    <title>All Categories</title>
 </head>
 <body>
-    <div th:insert="fragments/header"></div>
-    <div id="main-container">
-        <div id="margin-container">
-            <div id="page-title">
-                <h1>All Skills</h1>
-            </div>
+<div th:insert="fragments/header"></div>
+<div id="main-container">
+    <div id="margin-container">
+        <div id="page-title">
+            <h1>All Skills</h1>
+        </div>
+        <div id="all-skills-container">
+            <table id="skills-table">
+                <tr>
+                    <td>Name</td>
+                </tr>
+                <tr th:each="skill: ${skillList}">
+                    <td th:text="${skill.name}"></td>
+                    <td th:text="${skill.getCategory().getDescription()}"></td>
+                    <td sec:authorize="hasRole('ADMIN')">
+                        <a class="underlined-link" th:href="@{/skill/admin/editPage/{id}(id=${skill.getId()})}">Edit</a>
+                    </td>
+                    <td sec:authorize="hasRole('ADMIN')">
+                        <a class="underlined-link" th:href="@{/skill/admin/delete/{id}(id=${skill.getId()})}">Delete</a>
+                    </td>
+                </tr>
+            </table>
+            <form th:action="@{/skill/admin/add}" th:object="${skillDTO}" method="post">
+                Category Name
+                <p>
+                    <input type="text" th:field="*{name}" placeholder="Category Name"/>
+                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                </p>
+                <input type="submit" value="Add Category">
+            </form>
         </div>
     </div>
-    <footer th:replace="fragments/footer.html"></footer>
+</div>
+<footer th:replace="fragments/footer.html"></footer>
 </body>
 </html>
