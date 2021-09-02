@@ -50,6 +50,60 @@ body {
     color: #ffffff;
 }
 
+.sub-title {
+    text-align: center;
+    margin: 10px auto;
+}
+
+button {
+    height: 30px;
+    min-width: 80px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+}
+
+input,
+[type='text'],
+[type='password'],
+[type='date'],
+[type='datetime'],
+[type='datetime-local'],
+[type='month'],
+[type='week'],
+[type='email'],
+[type='number'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='url'],
+[type='color'],
+textarea,
+select {
+    width: 100%;
+    height: 30px;
+    margin: 0 0 20px;
+    padding: 10px 10px;
+    border: 1px solid #333333;
+    border-radius: 5px;
+    color: inherit;
+    transition: border-color 0.25s ease-in-out;
+    box-shadow: 1px 1px 1px #000000;
+    font-size: 0.8em;
+}
+
+.error-text{
+    text-align: center;
+    margin: 5px auto;
+    color: #d53a53;
+    font-size: 0.9em;
+}
+
 /*Header Styles*/
 #nav-container {
     width: 100%;
@@ -142,10 +196,28 @@ body {
     margin: 20px auto;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 #categories-table td {
     padding: 5px;
+    font-size: 0.8em;
+}
+
+#category-form-container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#category-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.add-category-content{
+    margin: 5px;
 }
 
 /*Skills CSS*/
@@ -157,4 +229,10 @@ body {
 
 #skills-table{
     padding: 5px;
+}
+
+/*View Skills By Category Styles*/
+#skill-table-by-category{
+    margin: 20px auto;
+    text-align: center;
 }

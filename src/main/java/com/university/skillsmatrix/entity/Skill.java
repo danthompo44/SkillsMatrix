@@ -3,6 +3,7 @@ package com.university.skillsmatrix.entity;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class Skill {
     private long id;
 
     @Column(name = "name")
+    @NotBlank
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

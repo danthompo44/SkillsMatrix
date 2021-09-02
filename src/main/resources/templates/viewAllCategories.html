@@ -14,11 +14,11 @@
     </div>
     <div id="all-categories-container">
       <table id="categories-table">
-        <tr>
-          <td>Name</td>
-        </tr>
         <tr th:each="category: ${categoryList}">
           <td th:text="${category.description}"></td>
+          <td sec:authorize="hasRole('ADMIN')">
+            <a class="underlined-link" th:href="@{/category/admin/skillPage/{id}(id=${category.getId()})}">View Skills</a>
+          </td>
           <td sec:authorize="hasRole('ADMIN')">
             <a class="underlined-link" th:href="@{/category/admin/editPage/{id}(id=${category.getId()})}">Edit</a>
           </td>
@@ -27,14 +27,20 @@
           </td>
         </tr>
       </table>
-      <form th:action="@{/category/admin/add}" th:object="${categoryDTO}" method="post">
-        Category Name
-        <p>
-          <input type="text" th:field="*{description}" placeholder="Category Name"/>
-          <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
-        </p>
-        <input type="submit" value="Add Category">
-      </form>
+      <p class="error-text" th:if="${deletionError}" th:text="${deletionError}"></p>
+      <div id="category-form-container">
+        <div class="sub-title">
+          <h3>Add A Category</h3>
+        </div>
+        <form id="category-form" th:action="@{/category/admin/add}" th:object="${categoryDTO}" method="post">
+          <p class="add-category-content">
+            <input type="text" th:field="*{description}" placeholder="Category Name"/>
+            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+          </p>
+          <button class="add-category-content" type="submit">Add</button>
+        </form>
+        <p class="error-text" th:if="${error}" th:text="${error}"></p>
+      </div>
     </div>
   </div>
 </div>

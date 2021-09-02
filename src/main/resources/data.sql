@@ -33,6 +33,5 @@ insert into staff_skill(staff_id, skill_id, expiry_date, skill_strength) values 
 
 insert into app_user_role (user_id, role_id) values (1,1);
 insert into app_user_role (user_id, role_id) values (2,2);
-insert into app_user_role (user_id, role_id) values (2,1);
 
 

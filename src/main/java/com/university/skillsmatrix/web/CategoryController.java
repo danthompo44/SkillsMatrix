@@ -1,26 +1,32 @@
 package com.university.skillsmatrix.web;
 
 import com.university.skillsmatrix.domain.SkillCategoryDTO;
+import com.university.skillsmatrix.domain.SkillDTO;
 import com.university.skillsmatrix.exceptions.ResourceNotFoundException;
 import com.university.skillsmatrix.service.CategoryService;
+import com.university.skillsmatrix.service.SkillService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/category")//localhost:8081/category
 @RequiredArgsConstructor
 public class CategoryController {
     private final CategoryService categoryService;
+    private final SkillService skillService;
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/all")
@@ -63,7 +69,7 @@ public class CategoryController {
         try {
             categoryService.deleteCategoryById(id);
         } catch (DataIntegrityViolationException ex) { //Catch if deletion fails due to constraint
-            model.addAttribute("deletionError", "Unable to delete record");
+            model.addAttribute("deletionError", "Category is bound to a skill and cannot be deleted");
         }
 
         return getAllCategories(model);
@@ -74,10 +80,28 @@ public class CategoryController {
     public String insertCategory(@Valid SkillCategoryDTO categoryDTO,
                                  BindingResult result,
                                  Model model) {
-        if(result.hasErrors()){
-            return "viewAllCategories";
+        try{
+            categoryService.save(categoryDTO);
+            System.out.println("No Error");
+        } catch (Exception ex) {
+            System.out.println("An Error");
+            model.addAttribute("error", "A category must have a description");
         }
-        categoryService.save(categoryDTO);
         return getAllCategories(model);
     }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/admin/skillPage/{id}")
+    public String getACategoriesSkills(@PathVariable Long id, Model model){
+        List<SkillDTO> skillDTOS = skillService.getSkillsByCategoryId(id);
+        String categoryDescription = categoryService.getCategoryById(id).getDescription();
+
+        categoryDescription += " Skills";
+
+        model.addAttribute("skills", skillDTOS);
+        model.addAttribute("categoryDescription", categoryDescription);
+
+        return "viewSkillsByCategory";
+    }
+
 }

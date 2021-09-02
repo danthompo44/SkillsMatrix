@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "skill_category")
@@ -21,5 +22,6 @@ public class SkillCategory {
     private long id;
 
     @Column(name="description")
+    @NotBlank
     private String description;
 }

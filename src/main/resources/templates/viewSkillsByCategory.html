@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html">
+    <title>View A Category</title>
+</head>
+<body>
+<div th:insert="fragments/header"></div>
+<div id="main-container">
+    <div id="margin-container">
+        <div id="page-title">
+            <h1 th:text="${categoryDescription}"></h1>
+        </div>
+        <table id="skill-table-by-category">
+            <tr th:if="${skills.size() == 0}">
+                <td>
+                    <p>This category has no associated skills</p>
+                </td>
+            </tr>
+            <tr th:each="skill: ${skills}">
+                <td th:text="${skill.name}">
+            </tr>
+        </table>
+    </div>
+</div>
+<footer th:replace="fragments/footer.html"></footer>
+</body>
+</html>

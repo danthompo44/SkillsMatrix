@@ -51,4 +51,16 @@ public class SkillService {
     public void deleteSkillById(Long id){
         skillRepository.deleteById(id);
     }
+
+    public List<SkillDTO> getSkillsByCategoryId(Long id){
+        List<SkillDTO> skillDTOS = new ArrayList<>();
+        List<Skill> skills = skillRepository.findSkillsByCategoryId(id);
+
+        for(Skill skill: skills){
+            SkillDTO dto = skillToDTOConvertor.convert(skill);
+            skillDTOS.add(dto);
+        }
+
+        return skillDTOS;
+    }
 }
