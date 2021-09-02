@@ -3,11 +3,14 @@ package com.university.skillsmatrix.convertor.staff;
 import com.university.skillsmatrix.convertor.category.DTOToSkillCategoryConvertor;
 import com.university.skillsmatrix.convertor.details.DTOToPersonalDetailsConvertor;
 import com.university.skillsmatrix.convertor.manager.DTOToManagerConvertor;
+import com.university.skillsmatrix.convertor.staffSkill.DTOToStaffSkillConvertor;
 import com.university.skillsmatrix.convertor.user.DTOToAppUserConvertor;
 import com.university.skillsmatrix.domain.SkillDTO;
 import com.university.skillsmatrix.domain.StaffDTO;
+import com.university.skillsmatrix.domain.StaffSkillDTO;
 import com.university.skillsmatrix.entity.Skill;
 import com.university.skillsmatrix.entity.Staff;
+import com.university.skillsmatrix.entity.StaffSkill;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -19,6 +22,7 @@ public class DTOToStaffConvertor {
     private final DTOToManagerConvertor managerConvertor = new DTOToManagerConvertor();
     private final DTOToAppUserConvertor userConvertor = new DTOToAppUserConvertor();
     private final DTOToSkillCategoryConvertor catConvertor = new DTOToSkillCategoryConvertor();
+    private final DTOToStaffSkillConvertor staffSkillConvertor = new DTOToStaffSkillConvertor();
 
     public Staff convert(StaffDTO dto){
         Staff s = new Staff();
@@ -27,6 +31,7 @@ public class DTOToStaffConvertor {
         s.setManager(managerConvertor.convert(dto.getManager()));
         s.setUser(userConvertor.convert(dto.getUser()));
         s.setSkills(addSkills(dto.getSkills()));
+        s.setStaffSkills(staffSkillConvertor.convert(dto.getStaffSkillList()));
 
         return s;
     }

@@ -41,4 +41,7 @@ public class Staff {
     )
     private List<Skill> skills = new ArrayList<>();
 
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name="staff_id")
+    private List<StaffSkill> staffSkills = new ArrayList<>();
 }
