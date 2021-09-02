@@ -43,4 +43,8 @@ public class PersonalDetailsDTO {
                 addressFirstLine, addressSecondLine,
                 county, postcode);
     }
+
+    public String getFullName(){
+        return String.format("%s %s", firstName, surname);
+    }
 }

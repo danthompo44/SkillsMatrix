@@ -55,4 +55,16 @@ public class StaffService {
             throw new ResourceNotFoundException("Manager is not found", "Enter a valid id");
         }
     }
+
+    public List<StaffDTO> getStaffBySkillId(Long id){
+        Iterable<Staff> staffIterable = staffRepository.findStaffsBySkillsId(id);
+        List<StaffDTO> staff = new ArrayList<>();
+
+        for(Staff s : staffIterable){
+            StaffDTO dto = staffConvertor.convert(s);
+            staff.add(dto);
+        }
+
+        return staff;
+    }
 }

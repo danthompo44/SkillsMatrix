@@ -52,22 +52,12 @@ public class StaffToDTOConvertorTest {
         return dto;
     }
 
-    private AppUserDTO convertUser(AppUser u){
+    private AppUserDTO convertUser(AppUser u) {
         AppUserDTO dto = new AppUserDTO();
         dto.setId(u.getId());
         dto.setUsername(u.getUsername());
         dto.setEmail(u.getEmail());
         dto.setPassword(u.getPassword());
-//        dto.setRole(convertRole(u.getRole()));
-
-        return dto;
-    }
-
-    private RoleDTO convertRole(Role r){
-        RoleDTO dto = new RoleDTO();
-        dto.setId(r.getId());
-        dto.setType(r.getType());
-
         return dto;
     }
 

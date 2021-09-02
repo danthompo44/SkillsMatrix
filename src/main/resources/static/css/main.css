@@ -275,3 +275,20 @@ select {
     margin: 20px auto;
     text-align: center;
 }
+
+/*View Staff By SKill Styles*/
+.staff-table-by-skill{
+    margin: 10px auto;
+}
+
+.staff-table-by-skill td{
+    padding: 10px;
+    font-size: 0.8em;
+    margin: 0 5px;
+    text-align: center;
+}
+
+#no-staff-message{
+    margin: 20px auto;
+    text-align: center;
+}

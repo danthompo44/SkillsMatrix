@@ -31,7 +31,6 @@ public class SkillController {
         model.addAttribute("skillList", skillService.getAllSkills());
         model.addAttribute("skillCategory", categoryService.getAllCategories());
         model.addAttribute("skillDTO", new SkillDTO());
-        System.out.println(categoryService.getAllCategories());
         return "viewAllSkills";
     }
 

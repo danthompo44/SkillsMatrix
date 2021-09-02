@@ -6,14 +6,15 @@
             </div>
         </div>
         <ul class="nav-links">
-            <li class="nav-link"><a href="/mySkills">My Skills</a></li>
+
             <span class="nav-links" sec:authorize="hasRole('USER')">
+                <li class="nav-link"><a href="/mySkills">My Skills</a></li>
                 <li class="nav-link"><a href="/details">My Details</a></li>
             </span>
             <span class="nav-links" sec:authorize="hasRole('ADMIN')">
                 <li class="nav-link"><a href="/skill/admin/all">Skills</a></li>
                 <li class="nav-link"><a href="/category/admin/all">Categories</a></li>
-                <li class="nav-link"><a href="/staff">My Staff</a></li>
+                <li class="nav-link"><a href="/staff">Staff</a></li>
             </span>
             <li class="nav-link"><a sec:authorize="isAuthenticated()" href="/logout">Logout</a></li>
         </ul>
