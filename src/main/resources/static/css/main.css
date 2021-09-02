@@ -52,12 +52,14 @@ body {
 
 .sub-title {
     text-align: center;
-    margin: 10px auto;
+    margin: 5px auto;
 }
 
 button {
     height: 30px;
+    margin: 5px auto;
     min-width: 80px;
+    max-width: 160px;
     border: none;
     border-radius: 5px;
     box-shadow: none;
@@ -86,9 +88,11 @@ input,
 textarea,
 select {
     width: 100%;
+    min-width: 80px;
+    max-width: 160px;
     height: 30px;
-    margin: 0 0 20px;
-    padding: 10px 10px;
+    margin: 5px auto;
+    padding: 0 10px;
     border: 1px solid #333333;
     border-radius: 5px;
     color: inherit;
@@ -102,6 +106,10 @@ select {
     margin: 5px auto;
     color: #d53a53;
     font-size: 0.9em;
+}
+
+.table-title{
+    font-weight: bold;
 }
 
 /*Header Styles*/
@@ -225,10 +233,41 @@ select {
     margin: 20px auto;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 #skills-table{
     padding: 5px;
+}
+
+#skills-table td {
+    padding: 5px;
+    font-size: 0.8em;
+}
+
+#add-skill-form-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#add-skill-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-skill-content{
+    text-align: center;
+    margin: 5px;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+}
+
+#category-container{
+    display: flex;
+    flex-direction: row;
 }
 
 /*View Skills By Category Styles*/

@@ -79,10 +79,14 @@ public class SkillController {
     public String insertSkill(@Valid SkillDTO skillDTO,
                                  BindingResult result,
                                  Model model) {
-        if(result.hasErrors()){
-            return "viewAllSkills";
+        try{
+            //Set the description before saving to the repo so UI can see description
+            skillDTO.getCategory().setDescription(categoryService.getCategoryById
+                    (skillDTO.getCategory().getId()).getDescription());
+            skillService.save(skillDTO);
+        } catch (Exception ex) {
+            model.addAttribute("error", "A skill must have a name");
         }
-        skillService.save(skillDTO);
         return getAllSkills(model);
     }
 }

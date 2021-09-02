@@ -15,7 +15,8 @@
         <div id="all-skills-container">
             <table id="skills-table">
                 <tr>
-                    <td>Name</td>
+                    <td class="table-title">Skill</td>
+                    <td class="table-title">Category</td>
                 </tr>
                 <tr th:each="skill: ${skillList}">
                     <td th:text="${skill.name}"></td>
@@ -28,22 +29,27 @@
                     </td>
                 </tr>
             </table>
-            <form th:action="@{/skill/admin/add}" th:object="${skillDTO}" method="post">
-                <p>
-                    Skill Name
-                    <input type="text" th:field="*{name}" placeholder="Description"/>
-                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-                </p>
-                <p>
-                    Category
-                    <select th:field="${skillDTO.category.id}">
-                        <option th:each="category : ${skillCategory}"
-                                th:value="${category.id}"
-                                th:utext="${category.description}"></option>
-                    </select>
-                </p>
-                <input type="submit" value="Add Skill">
-            </form>
+            <div id="add-skill-form-container">
+                <div class="sub-title">
+                    <h3>Add A Skill</h3>
+                </div>
+                <form id="add-skill-form" th:action="@{/skill/admin/add}" th:object="${skillDTO}" method="post">
+                    <p class="add-skill-content">
+                        <input type="text" th:field="*{name}" placeholder="Skill Name"/>
+                    </p>
+                    <div id="category-container">
+                        <p class="add-skill-content">Category</p>
+                        <select th:field="${skillDTO.category.id}">
+                            <option th:each="category : ${skillCategory}"
+                                    th:value="${category.id}"
+                                    th:utext="${category.description}"></option>
+                        </select>
+                    </div>
+                    <button class="add-skill-content" type="submit">Add</button>
+                </form>
+                <p class="error-text" th:if="${error}" th:text="${error}"></p>
+            </div>
+
         </div>
     </div>
 </div>

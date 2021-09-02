@@ -82,9 +82,7 @@ public class CategoryController {
                                  Model model) {
         try{
             categoryService.save(categoryDTO);
-            System.out.println("No Error");
         } catch (Exception ex) {
-            System.out.println("An Error");
             model.addAttribute("error", "A category must have a description");
         }
         return getAllCategories(model);
