@@ -67,4 +67,16 @@ public class StaffService {
 
         return staff;
     }
+
+    public List<StaffDTO> getStaffByManagerId(Long id){
+        Iterable<Staff> staffIterable = staffRepository.findStaffByManagerId(id);
+        List<StaffDTO> staff = new ArrayList<>();
+
+        for(Staff s : staffIterable){
+            StaffDTO dto = staffConvertor.convert(s);
+            staff.add(dto);
+        }
+
+        return staff;
+    }
 }

@@ -10,4 +10,5 @@ import java.util.List;
 public interface StaffRepository extends CrudRepository<Staff, Long> {
     Staff findStaffByUserId(Long id);
     List<Staff> findStaffsBySkillsId(Long id);
+    List<Staff> findStaffByManagerId(Long id);
 }

@@ -322,3 +322,8 @@ select {
 #no-skills-for-user p{
     text-align: center;
 }
+
+/*View Staff By Manager Styles*/
+#manager-staff-table-container{
+    margin: 10px auto;
+}

@@ -3,31 +3,26 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/head.html">
-    <title>All Staff</title>
+    <title>Manager's Staff Page</title>
 </head>
 <body>
 <div th:insert="fragments/header.html"></div>
 <div id="main-container">
     <div id="margin-container">
         <div id="page-title">
-            <h1>All Staff</h1>
+            <h1 th:text="${title}"></h1>
         </div>
-        <div id="all-staff-container">
+        <div id="manager-staff-table-container">
             <table id="staff-table">
                 <tr>
                     <td class="table-title">Staff Member</td>
-                    <td class="table-title">Manager</td>
                     <td class="table-title">Email</td>
                 </tr>
                 <tr th:each="staff: ${staffList}">
                     <td th:text="${staff.getDetails().getFullName()}"></td>
-                    <td sec:authorize="hasRole('ADMIN')">
-                        <a th:text="${staff.getManager().getDetails().getFullName()}" class="underlined-link" th:href="@{/staff/admin/managerPage/{id}(id=${staff.getManager().getId()})}">Manager's Staff</a>
-                    </td>
                     <td th:text="${staff.getUser().getEmail()}"></td>
                     <td sec:authorize="hasRole('ADMIN')">
                         <a class="underlined-link" th:href="@{/staff/admin/skillPage/{id}(id=${staff.getId()})}">View Skills</a>
-                    </td>
                 </tr>
             </table>
         </div>
