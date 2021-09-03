@@ -40,5 +40,4 @@ public class Staff {
             inverseJoinColumns=@JoinColumn(name="skill_id")
     )
     private List<Skill> skills = new ArrayList<>();
-
 }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/head.html">
+  <title>View Staff's Skills</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div id="main-container">
+  <div id="margin-container">
+    <div id="page-title">
+      <h1 th:text="${staffName}"></h1>
+    </div>
+    <div id="detailed-skills-container">
+      <div id="no-skills-for-user" th:if="${staffSkills.size() == 0}">
+        <p>No skills are registered to this user</p>
+      </div>
+      <table th:if="${staffSkills.size() > 0}" id="skill-table-by-staff">
+        <tr>
+          <td class="table-title">Skill</td>
+          <td class="table-title">Date Attained</td>
+          <td class="table-title">Expiry Date</td>
+          <td class="table-title">Skill Strength</td>
+        </tr>
+        <tr th:each="staffSkill: ${staffSkills}">
+          <td th:text="${staffSkill.skill.name}"></td>
+          <td th:text="${staffSkill.createdAt.toString()}"></td>
+          <td th:text="${staffSkill.expiryDate.toString()}"></td>
+          <td th:text="${staffSkill.skillStrength}"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div th:replace="fragments/footer.html"></div>
+</body>
+</html>

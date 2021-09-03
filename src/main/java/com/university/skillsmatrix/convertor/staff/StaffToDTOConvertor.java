@@ -3,6 +3,7 @@ package com.university.skillsmatrix.convertor.staff;
 import com.university.skillsmatrix.convertor.category.SkillCategoryToDTOConvertor;
 import com.university.skillsmatrix.convertor.details.PersonalDetailsToDTOConvertor;
 import com.university.skillsmatrix.convertor.manager.ManagerToDTOConvertor;
+import com.university.skillsmatrix.convertor.staffSkill.StaffSkillToDTOConvertor;
 import com.university.skillsmatrix.convertor.user.AppUserToDTOConvertor;
 import com.university.skillsmatrix.domain.SkillDTO;
 import com.university.skillsmatrix.domain.StaffDTO;

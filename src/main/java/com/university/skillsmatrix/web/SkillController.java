@@ -5,6 +5,7 @@ import com.university.skillsmatrix.domain.SkillDTO;
 import com.university.skillsmatrix.exceptions.ResourceNotFoundException;
 import com.university.skillsmatrix.service.CategoryService;
 import com.university.skillsmatrix.service.SkillService;
+import com.university.skillsmatrix.service.StaffService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -24,6 +25,7 @@ import javax.validation.Valid;
 public class SkillController {
     private final SkillService skillService;
     private final CategoryService categoryService;
+    private final StaffService staffService;
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/all")
@@ -87,5 +89,18 @@ public class SkillController {
             model.addAttribute("error", "A skill must have a name");
         }
         return getAllSkills(model);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/admin/staffPage/{id}")
+    public String getStaffBySkillId(@PathVariable Long id, Model model){
+        try {
+            model.addAttribute("staffList", staffService.getStaffBySkillId(id));
+            model.addAttribute("skillTitle",
+                    String.format("%s Staff", skillService.getSkillById(id).getName()));
+        } catch (Exception e){
+            return "error";
+        }
+        return "viewStaffBySkill";
     }
 }

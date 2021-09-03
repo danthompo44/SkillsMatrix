@@ -2,6 +2,7 @@ package com.university.skillsmatrix.web;
 
 import com.university.skillsmatrix.service.SkillService;
 import com.university.skillsmatrix.service.StaffService;
+import com.university.skillsmatrix.service.StaffSkillService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -15,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class StaffController {
     private final StaffService staffService;
-    private final SkillService skillService;
+    private final StaffSkillService staffSkillService;
 
     @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("")
+    @GetMapping("/admin/all")
     public String getAllStaff(Model model){
         model.addAttribute("staffList", staffService.getAllStaff());
         return "viewAllStaff";
@@ -26,18 +27,10 @@ public class StaffController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/skillPage/{id}")
-    public String getStaffBySkillId(@PathVariable Long id, Model model){
-        System.out.println("Get Staff By Id");
-        try {
-            model.addAttribute("staffList", staffService.getStaffBySkillId(id));
-            model.addAttribute("skillTitle",
-                    String.format("%s Staff", skillService.getSkillById(id).getName()));
-            System.out.println("No Error");
-        } catch (Exception e){
-            System.out.println("An Error");
-            return "error";
-        }
-        System.out.println("View Staff By Skill");
-        return "viewStaffBySkill";
+    public String viewAStaffMembersSkillsPage(@PathVariable Long id, Model model){
+        model.addAttribute("staffSkills", staffSkillService.getStaffSkillsByStaffId(id));
+        model.addAttribute("staffName",
+                String.format("%s's Skills", staffService.getStaffById(id).getDetails().getFullName()));
+        return "viewSkillsByStaff";
     }
 }

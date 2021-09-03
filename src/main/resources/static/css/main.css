@@ -199,6 +199,16 @@ select {
     margin-top: 20px;
 }
 
+/*All Staff Styles*/
+#all-staff-container{
+    margin: 10px auto;
+}
+
+#staff-table td {
+    padding: 5px;
+    font-size: 0.8em;
+}
+
 /*Categories CSS*/
 #all-categories-container{
     margin: 20px auto;
@@ -290,5 +300,25 @@ select {
 
 #no-staff-message{
     margin: 20px auto;
+    text-align: center;
+}
+
+/*View Skill Table By Staff Styles*/
+#skill-table-by-staff{
+    margin: 10px auto;
+}
+
+#skill-table-by-staff td{
+    padding: 10px;
+    font-size: 0.8em;
+    margin: 0 5px;
+    text-align: center;
+}
+
+#no-skills-for-user{
+    margin: 10px auto;
+}
+
+#no-skills-for-user p{
     text-align: center;
 }

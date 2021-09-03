@@ -28,7 +28,7 @@
                         <a class="underlined-link" th:href="@{/skill/admin/delete/{id}(id=${skill.getId()})}">Delete</a>
                     </td>
                     <td sec:authorize="hasRole('ADMIN')">
-                        <a class="underlined-link" th:href="@{/staff/admin/skillPage/{id}(id=${skill.getId()})}">View Staff</a>
+                        <a class="underlined-link" th:href="@{/skill/admin/staffPage/{id}(id=${skill.getId()})}">View Staff</a>
                     </td>
                 </tr>
             </table>

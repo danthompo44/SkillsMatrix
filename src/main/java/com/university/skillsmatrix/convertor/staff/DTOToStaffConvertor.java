@@ -3,11 +3,14 @@ package com.university.skillsmatrix.convertor.staff;
 import com.university.skillsmatrix.convertor.category.DTOToSkillCategoryConvertor;
 import com.university.skillsmatrix.convertor.details.DTOToPersonalDetailsConvertor;
 import com.university.skillsmatrix.convertor.manager.DTOToManagerConvertor;
+import com.university.skillsmatrix.convertor.staffSkill.DTOToStaffSkillConvertor;
 import com.university.skillsmatrix.convertor.user.DTOToAppUserConvertor;
 import com.university.skillsmatrix.domain.SkillDTO;
 import com.university.skillsmatrix.domain.StaffDTO;
+import com.university.skillsmatrix.domain.StaffSkillDTO;
 import com.university.skillsmatrix.entity.Skill;
 import com.university.skillsmatrix.entity.Staff;
+import com.university.skillsmatrix.entity.StaffSkill;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
