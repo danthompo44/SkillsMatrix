@@ -1,23 +1,25 @@
 package com.university.skillsmatrix.convertor.staffSkill;
 
+import com.university.skillsmatrix.convertor.skill.DTOToSkillConvertor;
+import com.university.skillsmatrix.convertor.staff.DTOToStaffConvertor;
 import com.university.skillsmatrix.domain.StaffSkillDTO;
 import com.university.skillsmatrix.entity.StaffSkill;
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DTOToStaffSkillConvertor {
-    public List<StaffSkill> convert(List<StaffSkillDTO> staffSkillDTOS){
-        List<StaffSkill> staffSkillList = new ArrayList<>();
+    private final DTOToSkillConvertor skillConvertor = new DTOToSkillConvertor();
+    private final DTOToStaffConvertor staffConvertor = new DTOToStaffConvertor();
+    public StaffSkill convert(StaffSkillDTO dto){
+        StaffSkill staffSkill = new StaffSkill();
 
-        for (StaffSkillDTO dto: staffSkillDTOS){
-            StaffSkill staffSkill = new StaffSkill();
-            staffSkill.setId(dto.getId());
-            staffSkill.setExpiryDate(dto.getExpiryDate());
-            staffSkill.setSkillStrength(dto.getSkillStrength());
+        staffSkill.setId(dto.getId());
+        staffSkill.setCreatedAt(dto.getCreatedAt());
+        staffSkill.setExpiryDate(dto.getExpiryDate());
+        staffSkill.setSkillStrength(dto.getSkillStrength());
+        staffSkill.setSkill(skillConvertor.convert(dto.getSkill()));
+        staffSkill.setStaff(staffConvertor.convert(dto.getStaff()));
 
-            staffSkillList.add(staffSkill);
-        }
-
-        return staffSkillList;
+        return staffSkill;
     }
 }

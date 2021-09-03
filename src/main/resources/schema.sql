@@ -60,10 +60,11 @@ create table staff
 create table staff_skill
 (
     id      int auto_increment primary key,
-    staff_id int not null,
-    skill_id int not null,
+    created_at date not null,
     expiry_date date not null,
     skill_strength int not null,
+    staff_id int not null,
+    skill_id int not null,
     foreign key (staff_id) references staff (id),
     foreign key (skill_id) references skill (id)
 );

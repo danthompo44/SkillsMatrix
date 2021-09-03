@@ -29,10 +29,6 @@ public class Skill {
     @ManyToMany(mappedBy = "skills")
     private List<Staff> staffList = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name="skill_id")
-    private List<StaffSkill> staffSkills;
-
     public String toString(){
         return String.format("%d, %s, %s, %s" ,
                 id, name, category, staffList);

@@ -34,14 +34,4 @@ public class SkillDTO {
         staffList.remove(staff);
     }
 
-    private List<StaffSkillDTO> staffSkillList;
-
-    public void addStaffSkill(StaffSkillDTO staffSkillDTO){
-        if(staffSkillList.contains(staffSkillDTO)) return;
-        staffSkillList.add(staffSkillDTO);
-    }
-
-    public void removeStaffSkill(StaffSkillDTO staffSkillDTO){
-        staffSkillList.remove(staffSkillDTO);
-    }
 }

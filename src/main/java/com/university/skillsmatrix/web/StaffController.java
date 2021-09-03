@@ -2,6 +2,7 @@ package com.university.skillsmatrix.web;
 
 import com.university.skillsmatrix.service.SkillService;
 import com.university.skillsmatrix.service.StaffService;
+import com.university.skillsmatrix.service.StaffSkillService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class StaffController {
     private final StaffService staffService;
-    private final SkillService skillService;
+    private final StaffSkillService staffSkillService;
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/all")
@@ -27,7 +28,9 @@ public class StaffController {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/skillPage/{id}")
     public String viewAStaffMembersSkillsPage(@PathVariable Long id, Model model){
-        System.out.println("View a staff members skill p[age");
-        return "Nothing";
+        model.addAttribute("staffSkills", staffSkillService.getStaffSkillsByStaffId(id));
+        model.addAttribute("staffName",
+                String.format("%s's Skills", staffService.getStaffById(id).getDetails().getFullName()));
+        return "viewSkillsByStaff";
     }
 }

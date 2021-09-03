@@ -14,7 +14,6 @@ import java.util.List;
 @Component
 public class SkillToDTOConvertor {
     private final SkillCategoryToDTOConvertor catConvertor = new SkillCategoryToDTOConvertor();
-    private final StaffSkillToDTOConvertor staffSkillConvertor = new StaffSkillToDTOConvertor();
 
     //Only process information needed for viewing all skills in the front end
     public SkillDTO convert(Skill s){
@@ -22,7 +21,6 @@ public class SkillToDTOConvertor {
         dto.setId(s.getId());
         dto.setName(s.getName());
         dto.setCategory(catConvertor.convert(s.getCategory()));
-        dto.setStaffSkillList(staffSkillConvertor.convert(s.getStaffSkills()));
 
         return dto;
     }

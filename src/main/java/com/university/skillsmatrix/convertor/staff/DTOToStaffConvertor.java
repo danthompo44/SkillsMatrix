@@ -22,7 +22,6 @@ public class DTOToStaffConvertor {
     private final DTOToManagerConvertor managerConvertor = new DTOToManagerConvertor();
     private final DTOToAppUserConvertor userConvertor = new DTOToAppUserConvertor();
     private final DTOToSkillCategoryConvertor catConvertor = new DTOToSkillCategoryConvertor();
-    private final DTOToStaffSkillConvertor staffSkillConvertor = new DTOToStaffSkillConvertor();
 
     public Staff convert(StaffDTO dto){
         Staff s = new Staff();
@@ -31,7 +30,6 @@ public class DTOToStaffConvertor {
         s.setManager(managerConvertor.convert(dto.getManager()));
         s.setUser(userConvertor.convert(dto.getUser()));
         s.setSkills(addSkills(dto.getSkills()));
-        s.setStaffSkills(staffSkillConvertor.convert(dto.getStaffSkillList()));
 
         return s;
     }
