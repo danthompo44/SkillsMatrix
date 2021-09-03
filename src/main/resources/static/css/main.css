@@ -199,6 +199,16 @@ select {
     margin-top: 20px;
 }
 
+/*All Staff Styles*/
+#all-staff-container{
+    margin: 10px auto;
+}
+
+#staff-table td {
+    padding: 5px;
+    font-size: 0.8em;
+}
+
 /*Categories CSS*/
 #all-categories-container{
     margin: 20px auto;

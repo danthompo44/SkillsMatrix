@@ -18,7 +18,7 @@ public class StaffController {
     private final SkillService skillService;
 
     @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("")
+    @GetMapping("/admin/all")
     public String getAllStaff(Model model){
         model.addAttribute("staffList", staffService.getAllStaff());
         return "viewAllStaff";
@@ -26,18 +26,8 @@ public class StaffController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/skillPage/{id}")
-    public String getStaffBySkillId(@PathVariable Long id, Model model){
-        System.out.println("Get Staff By Id");
-        try {
-            model.addAttribute("staffList", staffService.getStaffBySkillId(id));
-            model.addAttribute("skillTitle",
-                    String.format("%s Staff", skillService.getSkillById(id).getName()));
-            System.out.println("No Error");
-        } catch (Exception e){
-            System.out.println("An Error");
-            return "error";
-        }
-        System.out.println("View Staff By Skill");
-        return "viewStaffBySkill";
+    public String viewAStaffMembersSkillsPage(@PathVariable Long id, Model model){
+        System.out.println("View a staff members skill p[age");
+        return "Nothing";
     }
 }
