@@ -14,46 +14,63 @@
     </div>
       <div id="details-container">
           <form th:action="@{/details/admin/update/{id}(id=${details.id})}" method="post">
-              <p>
-                  First Name
-                  <input type="text" th:field="*{details.firstName}"  name="firstName" placeholder="First Name"/>
+              <div class="details-line">
+                  <p>First Name</p>
+                  <label>
+                      <input type="text" th:field="*{details.firstName}"  name="firstName" placeholder="First Name"/>
+                  </label>
                   <span th:if="${#fields.hasErrors('details.firstName')}"
                         th:errors="*{details.firstName}" th:errorclass="fieldError"></span>
-              </p>
-              <p>
-                  Surname
-                  <input type="text" th:field="*{details.surname}"  name="surname" placeholder="Surname"/>
+              </div>
+              <div class="details-line">
+                  <p>Surname</p>
+                  <label>
+                      <input type="text" th:field="*{details.surname}"  name="surname" placeholder="Surname"/>
+                  </label>
                   <span th:if="${#fields.hasErrors('details.surname')}"
                         th:errors="*{details.surname}" th:errorclass="fieldError"></span>
-              </p>
-              <p>
-                  Address First Line
-                  <input type="text" th:field="*{details.addressFirstLine}"  name="addressFirstLine" placeholder="Address First Line"/>
+              </div>
+              <div class="details-line">
+                  <p>Address First Line</p>
+                  <label>
+                      <input type="text" th:field="*{details.addressFirstLine}"  name="addressFirstLine" placeholder="Address First Line"/>
+                  </label>
                   <span th:if="${#fields.hasErrors('details.addressFirstLine')}"
                         th:errors="*{details.addressFirstLine}" th:errorclass="fieldError"></span>
-              </p>
-              <p>
-                  Address Second Line
-                  <input type="text" th:field="*{details.addressSecondLine}"  name="addressSecondLine" placeholder="Address Second Line"/>
+              </div>
+              <div class="details-line">
+                  <p>Address Second Line</p>
+                  <label>
+                      <input type="text" th:field="*{details.addressSecondLine}"  name="addressSecondLine" placeholder="Address Second Line"/>
+                  </label>
                   <span th:if="${#fields.hasErrors('details.addressSecondLine')}"
                         th:errors="*{details.addressSecondLine}" th:errorclass="fieldError"></span>
-              </p>
-              <p>
-                  County
-                  <input type="text" th:field="*{details.county}"  name="county" placeholder="County"/>
+              </div>
+              <div class="details-line">
+                  <p>County</p>
+                  <label>
+                      <input type="text" th:field="*{details.county}"  name="county" placeholder="County"/>
+                  </label>
                   <span th:if="${#fields.hasErrors('details.county')}"
                         th:errors="*{details.county}" th:errorclass="fieldError"></span>
-              </p>
-              <p>
-                  Postcode
-                  <input type="text" th:field="*{details.postcode}"  name="postcode" placeholder="Postcode"/>
+              </div>
+              <div class="details-line">
+                  <p>Postcode</p>
+                  <label>
+                      <input type="text" th:field="*{details.postcode}"  name="postcode" placeholder="Postcode"/>
+                  </label>
                   <span th:if="${#fields.hasErrors('details.postcode')}"
                         th:errors="*{details.postcode}" th:errorclass="fieldError"></span>
-              </p>
-              <input type="submit" value="Update">
+              </div>
+              <p class="error-text" th:if="${errorString}" th:text="${errorString}"></p>
+              <div class="button-container">
+                  <button type="submit" value="Update">Update</button>
+              </div>
           </form>
           <form th:action="@{/details/admin/delete/{id}(id=${details.id})}" method="post">
-              <input type="submit" value="Delete">
+              <div class="button-container">
+                  <button type="submit" value="Delete">Delete</button>
+              </div>
           </form>
       </div>
   </div>

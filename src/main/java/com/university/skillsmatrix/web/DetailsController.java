@@ -41,6 +41,7 @@ public class DetailsController {
                                 BindingResult result,
                                 Model model) {
         if(result.hasErrors()) {
+            model.addAttribute("errorString", "All fields must have a value");
             addDetailsToModel(model);
             return "viewMyDetails";
         }

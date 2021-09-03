@@ -65,6 +65,8 @@ button {
     box-shadow: none;
     cursor: pointer;
     display: flex;
+    background-color: #5125ad;
+    color: #ffffff;
     align-items: center;
     justify-content: center;
     font-size: 0.8em;
@@ -95,7 +97,7 @@ select {
     padding: 0 10px;
     border: 1px solid #333333;
     border-radius: 5px;
-    color: inherit;
+    color: #222222;
     transition: border-color 0.25s ease-in-out;
     box-shadow: 1px 1px 1px #000000;
     font-size: 0.8em;
@@ -197,6 +199,28 @@ select {
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
+}
+
+.details-line{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.details-line p{
+    margin: 0 10px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.button-container{
+    margin: 5px 0;
+}
+
+.button-container input{
+    margin: auto;
+    display: flex;
 }
 
 /*All Staff Styles*/
