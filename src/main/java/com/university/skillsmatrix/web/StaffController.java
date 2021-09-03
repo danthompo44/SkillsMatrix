@@ -1,5 +1,11 @@
 package com.university.skillsmatrix.web;
 
+import com.university.skillsmatrix.convertor.staffSkill.IdDTOToStaffSkillDTO;
+import com.university.skillsmatrix.domain.SkillDTO;
+import com.university.skillsmatrix.domain.StaffDTO;
+import com.university.skillsmatrix.domain.StaffSkillDTO;
+import com.university.skillsmatrix.domain.StaffSkillIdDTO;
+import com.university.skillsmatrix.entity.Staff;
 import com.university.skillsmatrix.service.ManagerService;
 import com.university.skillsmatrix.service.SkillService;
 import com.university.skillsmatrix.service.StaffService;
@@ -8,9 +14,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/staff")//localhost:8081/staff
@@ -19,6 +29,8 @@ public class StaffController {
     private final StaffService staffService;
     private final StaffSkillService staffSkillService;
     private final ManagerService managerService;
+    private final SkillService skillService;
+    private final IdDTOToStaffSkillDTO idConvertor;
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/all")
@@ -47,5 +59,34 @@ public class StaffController {
             return "error";
         }
         return "viewManagersStaff";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/editSkillPage/{id}")
+    public String viewStaffSkillEditPage(@PathVariable Long id, Model model){
+        try{
+            model.addAttribute("staffSkillIdDTO", staffSkillService.findIdDtoById(id));
+        } catch (Exception ex){
+            return "error";
+        }
+        return "editStaffSkill";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/skill/update/{id}")
+    public String updateAStaffSkill(@Valid StaffSkillIdDTO dto, @PathVariable Long id, BindingResult result, Model model){
+        StaffDTO staff = staffService.getStaffById(dto.getStaffId());
+        SkillDTO skill = skillService.getSkillById(dto.getSkillId());
+
+        StaffSkillDTO skillDTO = idConvertor.convert(dto, staff, skill);
+        staffSkillService.save(skillDTO);
+
+        return "editStaffSkill";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/skill/delete/{id}")
+    public String deleteAStaffSkill(@PathVariable Long id, BindingResult result, Model model){
+        return "";
     }
 }

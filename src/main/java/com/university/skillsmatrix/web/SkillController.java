@@ -3,9 +3,7 @@ package com.university.skillsmatrix.web;
 import com.university.skillsmatrix.domain.SkillCategoryDTO;
 import com.university.skillsmatrix.domain.SkillDTO;
 import com.university.skillsmatrix.exceptions.ResourceNotFoundException;
-import com.university.skillsmatrix.service.CategoryService;
-import com.university.skillsmatrix.service.SkillService;
-import com.university.skillsmatrix.service.StaffService;
+import com.university.skillsmatrix.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,12 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/skill")//localhost:8081/skills
+@RequestMapping("/skill")//localhost:8081/skill
 @RequiredArgsConstructor
 public class SkillController {
     private final SkillService skillService;
     private final CategoryService categoryService;
     private final StaffService staffService;
+    private final UserService userService;
+    private final StaffSkillService staffSkillService;
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/all")
@@ -102,5 +102,14 @@ public class SkillController {
             return "error";
         }
         return "viewStaffBySkill";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/view")
+    public String viewMySkills(Model model){
+        model.addAttribute("staffSkillList",
+                staffSkillService.getStaffSkillsByStaffId(
+                        staffService.getStaffByAppUserId(userService.getAppUser().getId()).getId()));
+        return "viewMySkills";
     }
 }

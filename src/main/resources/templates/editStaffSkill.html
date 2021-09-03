@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/head.html">
+  <title>Edit A Staff's Skill</title>
+</head>
+<body>
+<div th:insert="fragments/header.html"></div>
+<div id="main-container">
+  <div id="margin-container">
+    <div id="page-title">
+      <h1>Edit Your Skill</h1>
+    </div>
+    <table id="skill-table-by-staff">
+      <form th:action="@{/staff/skill/update/{id}(id=${staffSkillIdDTO.getId()})}" th:object="${staffSkillIdDTO}" method="post">
+          <p class="add-category-content">
+            Expiry Date
+            <input type="date" th:field="*{expiryDate}" placeholder="Expiry Date"/>
+            <span th:if="${#fields.hasErrors('expiryDate')}" th:errors="*{expiryDate}"></span>
+          </p>
+          <p class="add-category-content">
+            Skill Strength
+            <input type="text" th:field="*{skillStrength}" placeholder="Skill Strength"/>
+            <span th:if="${#fields.hasErrors('skillStrength')}" th:errors="*{skillStrength}"></span>
+          </p>
+          <p class="add-category-content">
+              Staff Id
+              <input type="text" th:field="*{staffId}" placeholder="Staff Id"/>
+              <span th:if="${#fields.hasErrors('staffId')}" th:errors="*{staffId}"></span>
+          </p>
+          <p class="add-category-content">
+              Skill Id
+              <input type="text" th:field="*{skillId}" placeholder="Skill Id"/>
+              <span th:if="${#fields.hasErrors('skillId')}" th:errors="*{skillId}"></span>
+          </p>
+          <button type="submit" value="Edit">Edit</button>
+      </form>
+    </table>
+  </div>
+</div>
+<div th:replace="fragments/footer.html"></div>
+</body>
+</html>

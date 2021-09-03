@@ -14,7 +14,6 @@ public class DTOToStaffSkillConvertor {
         StaffSkill staffSkill = new StaffSkill();
 
         staffSkill.setId(dto.getId());
-        staffSkill.setCreatedAt(dto.getCreatedAt());
         staffSkill.setExpiryDate(dto.getExpiryDate());
         staffSkill.setSkillStrength(dto.getSkillStrength());
         staffSkill.setSkill(skillConvertor.convert(dto.getSkill()));

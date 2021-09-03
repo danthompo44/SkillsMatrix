@@ -15,7 +15,7 @@ import java.util.Date;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class StaffSkillDTO {
+public class StaffSkillIdDTO {
     private long id;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -26,8 +26,8 @@ public class StaffSkillDTO {
     private int skillStrength;
 
     @NotNull(message = "Skill cannot be null")
-    private SkillDTO skill;
+    private Long skillId;
 
     @NotNull(message = "Staff cannot be null")
-    private StaffDTO staff;
+    private Long staffId;
 }

@@ -39,14 +39,14 @@ insert into staff(details_id, user_id, manager_id) values (4, 3, 2);
 insert into staff(details_id, user_id, manager_id) values (6, 6, 2);
 
 
-insert into staff_skill(created_at, expiry_date, skill_strength, staff_id, skill_id) values ('2021-06-21', '2022-06-21', 8, 1, 1);
-insert into staff_skill(created_at, expiry_date, skill_strength, staff_id, skill_id) values ('2021-06-21', '2023-06-21', 7, 1, 2);
-insert into staff_skill(created_at, expiry_date, skill_strength, staff_id, skill_id) values ('2021-08-21', '2022-08-21', 9, 2, 3);
-insert into staff_skill(created_at, expiry_date, skill_strength, staff_id, skill_id) values ('2021-06-13', '2023-06-13', 5, 2, 2);
-insert into staff_skill(created_at, expiry_date, skill_strength, staff_id, skill_id) values ('2021-02-19', '2023-02-19', 8, 2, 5);
-insert into staff_skill(created_at, expiry_date, skill_strength, staff_id, skill_id) values ('2021-02-19', '2023-02-19', 5, 4, 2);
-insert into staff_skill(created_at, expiry_date, skill_strength, staff_id, skill_id) values ('2021-02-19', '2023-02-19', 9, 4, 3);
-insert into staff_skill(created_at, expiry_date, skill_strength, staff_id, skill_id) values ('2021-02-19', '2023-02-19', 4, 4, 5);
+insert into staff_skill(expiry_date, skill_strength, staff_id, skill_id) values ('2022-06-21', 8, 1, 1);
+insert into staff_skill(expiry_date, skill_strength, staff_id, skill_id) values ('2023-06-21', 7, 1, 2);
+insert into staff_skill(expiry_date, skill_strength, staff_id, skill_id) values ('2022-08-21', 9, 2, 3);
+insert into staff_skill(expiry_date, skill_strength, staff_id, skill_id) values ('2023-06-13', 5, 2, 2);
+insert into staff_skill(expiry_date, skill_strength, staff_id, skill_id) values ('2023-02-19', 8, 2, 5);
+insert into staff_skill(expiry_date, skill_strength, staff_id, skill_id) values ('2023-02-19', 5, 4, 2);
+insert into staff_skill(expiry_date, skill_strength, staff_id, skill_id) values ('2023-02-19', 9, 4, 3);
+insert into staff_skill(expiry_date, skill_strength, staff_id, skill_id) values ('2023-02-19', 4, 4, 5);
 
 insert into app_user_role (user_id, role_id) values (1,1);
 insert into app_user_role (user_id, role_id) values (2,1);
