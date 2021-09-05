@@ -162,21 +162,18 @@ public class StaffServiceTest {
         user1.setUsername("Username 1");
         user1.setEmail("email1@email.com");
         user1.setPassword("password");
-//        user1.setRole(managerRole);
 
         //Set AppUser 2
         user2.setId(104);
         user2.setUsername("Username 2");
         user2.setEmail("email2@email.com");
         user2.setPassword("password");
-//        user2.setRole(staffRole);
 
         //Set AppUser 3
         user3.setId(105);
         user3.setUsername("Username 3");
         user3.setEmail("email3@email.com");
         user3.setPassword("password");
-//        user3.setRole(staffRole);
 
         //Set Manager
         manager.setId(72);
@@ -260,7 +257,7 @@ public class StaffServiceTest {
     }
 
     @Test
-    public void test01_When_Given_A_Request_For_All_Tools_Return_All(){
+    public void test01_When_Given_A_Request_For_All_Staff_Return_All(){
         List<Staff> requestedListOfStaff = new ArrayList<>();
         requestedListOfStaff.add(staff1);
         requestedListOfStaff.add(staff2);
