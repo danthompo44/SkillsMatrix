@@ -6,7 +6,7 @@ import com.university.skillsmatrix.entity.*;
 import com.university.skillsmatrix.repository.StaffRepository;
 import com.university.skillsmatrix.service.StaffService;
 import org.junit.FixMethodOrder;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.runners.MethodSorters;
@@ -55,7 +55,7 @@ public class StaffServiceTest {
         dto.setDetails(convertDetails(staff.getDetails()));
         dto.setUser(convertUser(staff.getUser()));
         dto.setManager(convertManager(staff.getManager()));
-        dto.setSkills(setSKills(staff.getSkills()));
+        dto.setSkills(setSkills(staff.getSkills()));
 
         return dto;
     }
@@ -79,18 +79,10 @@ public class StaffServiceTest {
         dto.setUsername(u.getUsername());
         dto.setEmail(u.getEmail());
         dto.setPassword(u.getPassword());
-//        dto.setRole(convertRole(u.getRole()));
 
         return dto;
     }
 
-    private RoleDTO convertRole(Role r){
-        RoleDTO dto = new RoleDTO();
-        dto.setId(r.getId());
-        dto.setType(r.getType());
-
-        return dto;
-    }
 
     private ManagerDTO convertManager(Manager m){
         ManagerDTO dto = new ManagerDTO();
@@ -101,16 +93,16 @@ public class StaffServiceTest {
         return dto;
     }
 
-    private List<SkillDTO> setSKills(List<Skill> skills){
+    private List<SkillDTO> setSkills(List<Skill> skills){
         List<SkillDTO> skillDTOS = new ArrayList<>();
         for(Skill s: skills){
-            SkillDTO dto = convertSKill(s);
+            SkillDTO dto = convertSkill(s);
             skillDTOS.add(dto);
         }
         return skillDTOS;
     }
 
-    private SkillDTO convertSKill(Skill s){
+    private SkillDTO convertSkill(Skill s){
         SkillDTO dto = new SkillDTO();
         dto.setId(s.getId());
         dto.setName(s.getName());
@@ -210,9 +202,9 @@ public class StaffServiceTest {
         skill2.setCategory(cat1);
 
         //Set Skill 3
-        skill1.setId(434);
-        skill1.setName("VLANs");
-        skill1.setCategory(cat2);
+        skill3.setId(434);
+        skill3.setName("VLANs");
+        skill3.setCategory(cat2);
 
         //Staff 1's skills
         List<Skill> staff1Skills = new ArrayList<>();
