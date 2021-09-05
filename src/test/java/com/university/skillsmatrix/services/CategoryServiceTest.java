@@ -6,7 +6,6 @@ import com.university.skillsmatrix.domain.SkillCategoryDTO;
 import com.university.skillsmatrix.entity.SkillCategory;
 import com.university.skillsmatrix.repository.SkillCategoryRepository;
 import com.university.skillsmatrix.service.CategoryService;
-import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +13,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.runners.MethodSorters;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-
 import java.util.ArrayList;
 import java.util.List;
 
