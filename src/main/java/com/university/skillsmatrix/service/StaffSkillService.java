@@ -10,7 +10,6 @@ import com.university.skillsmatrix.exceptions.ResourceNotFoundException;
 import com.university.skillsmatrix.repository.StaffSkillRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +22,19 @@ public class StaffSkillService {
     private final StaffSkillToDTOConvertor staffSkillConvertor;
     private final StaffSkillDTOToStaffSkillIdDTO staffSkillIdConvertor;
     private final DTOToStaffSkillConvertor dtoToStaffSkillConvertor;
+
+    @Transactional
+    public List<StaffSkillDTO> getAllStaffSkills(){
+        Iterable<StaffSkill> staffSkillIterable = staffSkillRepository.findAll();
+        List<StaffSkillDTO> staffSkillDTOList = new ArrayList<>();
+
+        for(StaffSkill staffSkill: staffSkillIterable){
+            StaffSkillDTO dto = staffSkillConvertor.convert(staffSkill);
+            staffSkillDTOList.add(dto);
+        }
+
+        return staffSkillDTOList;
+    }
 
     @Transactional
     public List<StaffSkillDTO> getStaffSkillsByStaffId(Long id){

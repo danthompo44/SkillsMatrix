@@ -3,7 +3,6 @@ package com.university.skillsmatrix.service;
 import com.university.skillsmatrix.convertor.category.DTOToSkillCategoryConvertor;
 import com.university.skillsmatrix.convertor.category.SkillCategoryToDTOConvertor;
 import com.university.skillsmatrix.domain.SkillCategoryDTO;
-import com.university.skillsmatrix.entity.Skill;
 import com.university.skillsmatrix.entity.SkillCategory;
 import com.university.skillsmatrix.exceptions.ResourceNotFoundException;
 import com.university.skillsmatrix.repository.SkillCategoryRepository;

@@ -2,12 +2,9 @@ package com.university.skillsmatrix.services;
 
 import com.university.skillsmatrix.convertor.skill.DTOToSkillConvertor;
 import com.university.skillsmatrix.convertor.skill.SkillToDTOConvertor;
-import com.university.skillsmatrix.domain.ManagerDTO;
 import com.university.skillsmatrix.domain.SkillCategoryDTO;
 import com.university.skillsmatrix.domain.SkillDTO;
-import com.university.skillsmatrix.domain.StaffDTO;
 import com.university.skillsmatrix.entity.*;
-import com.university.skillsmatrix.exceptions.ResourceNotFoundException;
 import com.university.skillsmatrix.repository.SkillRepository;
 import com.university.skillsmatrix.service.SkillService;
 import org.junit.FixMethodOrder;
@@ -21,8 +18,6 @@ import org.mockito.Mock;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.openMocks;
 

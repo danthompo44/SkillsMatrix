@@ -83,7 +83,6 @@ public class StaffServiceTest {
         return dto;
     }
 
-
     private ManagerDTO convertManager(Manager m){
         ManagerDTO dto = new ManagerDTO();
         dto.setId(m.getId());
