@@ -6,6 +6,7 @@ import com.university.skillsmatrix.entity.*;
 import com.university.skillsmatrix.repository.StaffRepository;
 import com.university.skillsmatrix.service.StaffService;
 import org.junit.FixMethodOrder;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,9 +15,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.MockitoAnnotations.openMocks;
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -39,6 +40,8 @@ public class StaffServiceTest {
     private final AppUser user2 = new AppUser();
     private final AppUser user3 = new AppUser();
     private final Manager manager = new Manager();
+    List<Skill> staff1Skills = new ArrayList<>();
+    List<Staff> staffList1 = new ArrayList<>();
     private final SkillCategory cat1 = new SkillCategory();
     private final SkillCategory cat2 = new SkillCategory();
     private final Skill skill1 = new Skill();
@@ -48,6 +51,7 @@ public class StaffServiceTest {
     private final Staff staff2 = new Staff();
     private StaffDTO dto1 = null;
     private StaffDTO dto2 = null;
+    private List<Staff> managerStaffList = new ArrayList<>();
 
     private StaffDTO convertToDTO(Staff staff){
         StaffDTO dto = new StaffDTO();
@@ -203,7 +207,6 @@ public class StaffServiceTest {
         skill3.setCategory(cat2);
 
         //Staff 1's skills
-        List<Skill> staff1Skills = new ArrayList<>();
         staff1Skills.add(skill2);
         staff1Skills.add(skill3);
 
@@ -227,7 +230,6 @@ public class StaffServiceTest {
         staff2.setSkills(staff2Skills);
 
         //Staff List for SKill 1
-        List<Staff> staffList1 = new ArrayList<>();
         staffList1.add(staff2);
 
         //Staff List for SKill 2
@@ -248,6 +250,10 @@ public class StaffServiceTest {
         //Convert To Staff DTOs
         dto1 = convertToDTO(staff1);
         dto2 = convertToDTO(staff2);
+
+        //Add manager
+        managerStaffList.add(staff1);
+        managerStaffList.add(staff2);
     }
 
     @AfterEach
@@ -274,11 +280,76 @@ public class StaffServiceTest {
         List<StaffDTO> newStaff = staffService.getAllStaff();
 
         //Assert sizes are the same
-        assertEquals(newStaff.size(), requestedListOfStaff.size());
+        Assertions.assertEquals(newStaff.size(), requestedListOfStaff.size());
 
         //Check elements are the same
         for(int i = 0; i< newStaff.size(); i++){
-            assertEquals(newStaff.get(i), expectedListOfStaff.get(i));
+            Assertions.assertEquals(newStaff.get(i), expectedListOfStaff.get(i));
         }
+    }
+
+    @Test
+    public void test02WhenGivenARequestToRetrieveStaffByIdStaffIsReturned(){
+        when(staffRepository.findById(1L)).thenReturn(Optional.of(staff1));
+
+        //Convertor Mock Behaviour
+        when(staffConvertor.convert(staff1)).thenReturn(dto1);
+
+        StaffDTO expectedStaff = dto1;
+
+        StaffDTO newStaff = staffService.getStaffById(1L);
+
+        //Assert are the same
+        Assertions.assertEquals(expectedStaff, newStaff);
+    }
+
+    @Test
+    public void test03WhenGivenARequestToRetrieveStaffByUserIdStaffIsReturned(){
+        when(staffRepository.findStaffByUserId(104L)).thenReturn(staff1);
+
+        //Convertor Mock Behaviour
+        when(staffConvertor.convert(staff1)).thenReturn(dto1);
+
+        StaffDTO expectedStaff = dto1;
+
+        StaffDTO newStaff = staffService.getStaffByAppUserId(104L);
+
+        //Assert are the same
+        Assertions.assertEquals(expectedStaff, newStaff);
+    }
+
+    @Test
+    public void test04WhenGivenARequestToRetrieveStaffBySkillIdStaffIsReturned(){
+        when(staffRepository.findStaffsBySkillsId(432L)).thenReturn(staffList1);
+
+        //Convertor Mock Behaviour
+        when(staffConvertor.convert(staff2)).thenReturn(dto2);
+
+        List<StaffDTO> expectedStaffList = new ArrayList<>();
+        expectedStaffList.add(dto2);
+
+        List<StaffDTO> newStaffList = staffService.getStaffBySkillId(432L);
+
+        //Assert are the same
+        Assertions.assertEquals(expectedStaffList, newStaffList);
+    }
+
+    @Test
+    public void test05WhenGivenARequestToRetrieveStaffByManagerIdStaffIsReturned(){
+        when(staffRepository.findStaffByManagerId(72L)).thenReturn(managerStaffList);
+
+        //Convertor Mock Behaviour
+        when(staffConvertor.convert(staff1)).thenReturn(dto1);
+        when(staffConvertor.convert(staff2)).thenReturn(dto2);
+
+        //Set expected manager staff list
+        List<StaffDTO> managerDTOStaffList = new ArrayList<>();
+        managerDTOStaffList.add(dto1);
+        managerDTOStaffList.add(dto2);
+
+        List<StaffDTO> newStaffList = staffService.getStaffByManagerId(72L);
+
+        //Assert are the same
+        Assertions.assertEquals(managerDTOStaffList, newStaffList);
     }
 }
