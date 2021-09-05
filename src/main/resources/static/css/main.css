@@ -114,6 +114,10 @@ select {
     font-weight: bold;
 }
 
+.hidden{
+    display: none;
+}
+
 /*Header Styles*/
 #nav-container {
     width: 100%;
@@ -350,4 +354,11 @@ select {
 /*View Staff By Manager Styles*/
 #manager-staff-table-container{
     margin: 10px auto;
+}
+
+/*Edit Skill Page Styles*/
+.edit-skill-content{
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
 }

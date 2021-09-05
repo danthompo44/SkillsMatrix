@@ -10,30 +10,35 @@
 <div id="main-container">
   <div id="margin-container">
     <div id="page-title">
-      <h1>Edit Your Skill</h1>
+      <h1 th:text="${titleString}"></h1>
     </div>
     <table id="skill-table-by-staff">
-      <form th:action="@{/staff/skill/update/{id}(id=${staffSkillIdDTO.getId()})}" th:object="${staffSkillIdDTO}" method="post">
-          <p class="add-category-content">
-            Expiry Date
-            <input type="date" th:field="*{expiryDate}" placeholder="Expiry Date"/>
-            <span th:if="${#fields.hasErrors('expiryDate')}" th:errors="*{expiryDate}"></span>
-          </p>
-          <p class="add-category-content">
-            Skill Strength
-            <input type="text" th:field="*{skillStrength}" placeholder="Skill Strength"/>
-            <span th:if="${#fields.hasErrors('skillStrength')}" th:errors="*{skillStrength}"></span>
-          </p>
-          <p class="add-category-content">
+      <form th:action="@{/skill/staff/update/{id}(id=${staffSkillIdDTO.getId()})}" th:object="${staffSkillIdDTO}" method="post">
+          <div class="edit-skill-content">
+              <p>
+                  Expiry Date
+                  <input type="date" th:field="*{expiryDate}" placeholder="Expiry Date"/>
+                  <span th:if="${#fields.hasErrors('expiryDate')}" th:errors="*{expiryDate}"></span>
+              </p>
+          </div>
+          <div class="edit-skill-content">
+              <p>
+                  Skill Strength
+                  <input type="text" th:field="*{skillStrength}" placeholder="Skill Strength"/>
+                  <span th:if="${#fields.hasErrors('skillStrength')}" th:errors="*{skillStrength}"></span>
+              </p>
+          </div>
+          <p class="hidden">
               Staff Id
               <input type="text" th:field="*{staffId}" placeholder="Staff Id"/>
               <span th:if="${#fields.hasErrors('staffId')}" th:errors="*{staffId}"></span>
           </p>
-          <p class="add-category-content">
+          <p class="hidden" >
               Skill Id
               <input type="text" th:field="*{skillId}" placeholder="Skill Id"/>
               <span th:if="${#fields.hasErrors('skillId')}" th:errors="*{skillId}"></span>
           </p>
+          <p class="error-text" th:if="${error}" th:text="${error}"></p>
           <button type="submit" value="Edit">Edit</button>
       </form>
     </table>

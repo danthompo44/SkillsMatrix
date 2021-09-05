@@ -11,6 +11,7 @@ import com.university.skillsmatrix.service.SkillService;
 import com.university.skillsmatrix.service.StaffService;
 import com.university.skillsmatrix.service.StaffSkillService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +31,6 @@ public class StaffController {
     private final StaffSkillService staffSkillService;
     private final ManagerService managerService;
     private final SkillService skillService;
-    private final IdDTOToStaffSkillDTO idConvertor;
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/all")
@@ -61,32 +61,5 @@ public class StaffController {
         return "viewManagersStaff";
     }
 
-    @PreAuthorize("isAuthenticated()")
-    @GetMapping("/editSkillPage/{id}")
-    public String viewStaffSkillEditPage(@PathVariable Long id, Model model){
-        try{
-            model.addAttribute("staffSkillIdDTO", staffSkillService.findIdDtoById(id));
-        } catch (Exception ex){
-            return "error";
-        }
-        return "editStaffSkill";
-    }
 
-    @PreAuthorize("isAuthenticated()")
-    @PostMapping("/skill/update/{id}")
-    public String updateAStaffSkill(@Valid StaffSkillIdDTO dto, @PathVariable Long id, BindingResult result, Model model){
-        StaffDTO staff = staffService.getStaffById(dto.getStaffId());
-        SkillDTO skill = skillService.getSkillById(dto.getSkillId());
-
-        StaffSkillDTO skillDTO = idConvertor.convert(dto, staff, skill);
-        staffSkillService.save(skillDTO);
-
-        return "editStaffSkill";
-    }
-
-    @PreAuthorize("isAuthenticated()")
-    @PostMapping("/skill/delete/{id}")
-    public String deleteAStaffSkill(@PathVariable Long id, BindingResult result, Model model){
-        return "";
-    }
 }

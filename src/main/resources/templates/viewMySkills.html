@@ -19,7 +19,6 @@
             <table th:if="${staffSkillList.size() > 0}" id="skill-table-by-staff">
                 <tr>
                     <td class="table-title">Skill</td>
-                    <td class="table-title">Date Attained</td>
                     <td class="table-title">Expiry Date</td>
                     <td class="table-title">Skill Strength</td>
                 </tr>
@@ -28,13 +27,11 @@
                     <td th:text="${staffSkill.expiryDate.toString()}"></td>
                     <td th:text="${staffSkill.skillStrength}"></td>
                     <td sec:authorize="isAuthenticated()">
-                        <a class="underlined-link" th:href="@{/staff/editSkillPage/{id}(id=${staffSkill.getId()})}">Edit</a>
+                        <a class="underlined-link" th:href="@{/skill/editSkillPage/{id}(id=${staffSkill.getId()})}">Edit</a>
                     </td>
-                    </form>
-                    <form th:action="@{/staff/skill/delete/{id}(id=${staffSkill.id})}" method="post">
-                        <div class="button-container">
-                            <button type="submit" value="Delete">Delete</button>
-                        </div>
+                    <td sec:authorize="isAuthenticated()">
+                        <a class="underlined-link" th:href="@{/skill/staff/delete/{id}(id=${staffSkill.getId()})}">Delete</a>
+                    </td>
                     </form>
                 </tr>
             </table>

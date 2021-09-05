@@ -63,4 +63,8 @@ public class StaffSkillService {
         staffSkill = staffSkillRepository.save(staffSkill);
         return staffSkillConvertor.convert(staffSkill);
     }
+
+    public void deleteStaffSKillById(Long id){
+        staffSkillRepository.deleteById(id);
+    }
 }

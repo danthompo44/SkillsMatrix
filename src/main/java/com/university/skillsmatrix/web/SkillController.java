@@ -1,7 +1,7 @@
 package com.university.skillsmatrix.web;
 
-import com.university.skillsmatrix.domain.SkillCategoryDTO;
-import com.university.skillsmatrix.domain.SkillDTO;
+import com.university.skillsmatrix.convertor.staffSkill.IdDTOToStaffSkillDTO;
+import com.university.skillsmatrix.domain.*;
 import com.university.skillsmatrix.exceptions.ResourceNotFoundException;
 import com.university.skillsmatrix.service.*;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +26,7 @@ public class SkillController {
     private final StaffService staffService;
     private final UserService userService;
     private final StaffSkillService staffSkillService;
+    private final IdDTOToStaffSkillDTO idConvertor;
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/all")
@@ -111,5 +112,50 @@ public class SkillController {
                 staffSkillService.getStaffSkillsByStaffId(
                         staffService.getStaffByAppUserId(userService.getAppUser().getId()).getId()));
         return "viewMySkills";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/editSkillPage/{id}")
+    public String viewStaffSkillEditPage(@PathVariable Long id, Model model){
+        try{
+            model.addAttribute("staffSkillIdDTO", staffSkillService.findIdDtoById(id));
+            model.addAttribute("titleString",
+                    String.format("Edit Your %s Skill",
+                            skillService.getSkillById(staffSkillService.findById(id).getSkill().getId()).getName()));
+        } catch (Exception ex){
+            return "error";
+        }
+        return "editStaffSkill";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/staff/update/{id}")
+    public String updateAStaffSkill(StaffSkillIdDTO dto, @PathVariable Long id, Model model){
+        if(dto.getSkillStrength() > 10 || dto.getSkillStrength() < 0){
+            model.addAttribute("error", "Skill level must be between 0-10.");
+            return viewStaffSkillEditPage(id, model);
+        }
+        try{
+            StaffDTO staff = staffService.getStaffById(dto.getStaffId());
+            SkillDTO skill = skillService.getSkillById(dto.getSkillId());
+
+            StaffSkillDTO skillDTO = idConvertor.convert(dto, staff, skill);
+            staffSkillService.save(skillDTO);
+        } catch(Exception ex){
+            return "error";
+        }
+        return viewMySkills(model);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/staff/delete/{id}")
+    public String deleteAStaffSkill(@PathVariable Long id, Model model){
+        try {
+            staffSkillService.deleteStaffSKillById(id);
+        } catch (DataIntegrityViolationException ex) { //Catch if deletion fails due to constraint
+            model.addAttribute("deletionError", "Category is bound to a skill and cannot be deleted");
+        }
+
+        return viewMySkills(model);
     }
 }

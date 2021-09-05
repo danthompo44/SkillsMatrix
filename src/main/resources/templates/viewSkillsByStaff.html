@@ -19,13 +19,11 @@
       <table th:if="${staffSkills.size() > 0}" id="skill-table-by-staff">
         <tr>
           <td class="table-title">Skill</td>
-          <td class="table-title">Date Attained</td>
           <td class="table-title">Expiry Date</td>
           <td class="table-title">Skill Strength</td>
         </tr>
         <tr th:each="staffSkill: ${staffSkills}">
           <td th:text="${staffSkill.skill.name}"></td>
-          <td th:text="${staffSkill.createdAt.toString()}"></td>
           <td th:text="${staffSkill.expiryDate.toString()}"></td>
           <td th:text="${staffSkill.skillStrength}"></td>
         </tr>
