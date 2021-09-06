@@ -25,7 +25,6 @@ public class StaffDTOValidatorTest {
     private ManagerDTO manager;
     private SkillDTO skill1;
     private SkillDTO skill2;
-    private List<SkillDTO> skillList;
 
     @Before
     public void init(){
@@ -120,7 +119,7 @@ public class StaffDTOValidatorTest {
     }
 
     private void setSkillList(){
-        skillList = new ArrayList<>();
+        List<SkillDTO> skillList = new ArrayList<>();
         skillList.add(skill1);
         staff.setSkills(skillList);
     }
