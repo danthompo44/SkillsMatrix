@@ -11,13 +11,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -69,7 +66,7 @@ public class CategoryController {
         try {
             categoryService.deleteCategoryById(id);
         } catch (DataIntegrityViolationException ex) { //Catch if deletion fails due to constraint
-            model.addAttribute("deletionError", "Category is bound to a skill and cannot be deleted");
+            model.addAttribute("deletionError", "Unable to delete category");
         }
 
         return getAllCategories(model);
@@ -78,7 +75,6 @@ public class CategoryController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/admin/add")
     public String insertCategory(@Valid SkillCategoryDTO categoryDTO,
-                                 BindingResult result,
                                  Model model) {
         try{
             categoryService.save(categoryDTO);
