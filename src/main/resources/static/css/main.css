@@ -389,3 +389,12 @@ select {
 #user-description-container p {
     text-align: center;
 }
+
+/*Error Page*/
+#error-container{
+    margin: 30px auto;
+}
+
+#error-container h1{
+    text-align: center;
+}
