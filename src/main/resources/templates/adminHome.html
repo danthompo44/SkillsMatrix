@@ -9,8 +9,13 @@
   <div th:insert="fragments/header"></div>
   <div id="main-container">
     <div id="margin-container">
-      Logged user: <span sec:authentication="name">user name?</span>
-      Roles: <span sec:authentication="principal.authorities">roles?</span>
+        <div class="first-name-container">
+            <h1 th:text="${username}"></h1>
+        </div>
+        <div id="admin-description-container">
+            <p>As an admin you have the ability to add, edit and delete skills and categories.
+                Whilst also being able to see staff skills and other relevant information.</p>
+        </div>
     </div>
   </div>
   <footer th:replace="fragments/footer.html"></footer>

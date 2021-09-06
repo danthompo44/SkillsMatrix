@@ -118,6 +118,15 @@ select {
     display: none;
 }
 
+.first-name-container{
+    margin: 30px auto;
+}
+
+.first-name-container h1{
+    text-align: center;
+    color: white;
+}
+
 /*Header Styles*/
 #nav-container {
     width: 100%;
@@ -361,4 +370,22 @@ select {
     margin: 10px auto;
     display: flex;
     justify-content: space-between;
+}
+
+/*Admin Home*/
+#admin-description-container{
+    margin: 10px auto;
+}
+
+#admin-description-container p{
+    text-align: center;
+}
+
+/*User Home*/
+#user-description-container{
+    margin: 10px auto;
+}
+
+#user-description-container p {
+    text-align: center;
 }
