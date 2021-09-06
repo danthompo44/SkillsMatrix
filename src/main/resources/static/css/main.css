@@ -398,3 +398,18 @@ select {
 #error-container h1{
     text-align: center;
 }
+
+/*Login*/
+#login-container{
+    display: flex;
+    margin: 20px auto;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-row{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px auto;
+    flex-direction: column;
+}
