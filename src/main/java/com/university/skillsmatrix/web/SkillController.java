@@ -1,6 +1,6 @@
 package com.university.skillsmatrix.web;
 
-import com.university.skillsmatrix.convertor.staffSkill.IdDTOToStaffSkillDTO;
+import com.university.skillsmatrix.convertor.staffSkill.IdDTOToStaffSkillDTOConvertor;
 import com.university.skillsmatrix.domain.*;
 import com.university.skillsmatrix.exceptions.ResourceNotFoundException;
 import com.university.skillsmatrix.service.*;
@@ -26,7 +26,7 @@ public class SkillController {
     private final StaffService staffService;
     private final UserService userService;
     private final StaffSkillService staffSkillService;
-    private final IdDTOToStaffSkillDTO idConvertor;
+    private final IdDTOToStaffSkillDTOConvertor idConvertor;
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/all")

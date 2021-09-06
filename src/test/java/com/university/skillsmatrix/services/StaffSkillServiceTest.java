@@ -1,7 +1,7 @@
 package com.university.skillsmatrix.services;
 
 import com.university.skillsmatrix.convertor.staffSkill.DTOToStaffSkillConvertor;
-import com.university.skillsmatrix.convertor.staffSkill.StaffSkillDTOToStaffSkillIdDTO;
+import com.university.skillsmatrix.convertor.staffSkill.StaffSkillDTOToStaffSkillIdDTOConvertor;
 import com.university.skillsmatrix.convertor.staffSkill.StaffSkillToDTOConvertor;
 import com.university.skillsmatrix.domain.*;
 import com.university.skillsmatrix.entity.*;
@@ -28,7 +28,7 @@ import static org.mockito.MockitoAnnotations.openMocks;
 public class StaffSkillServiceTest {
     @Mock private StaffSkillRepository repo;
     @Mock private StaffSkillToDTOConvertor staffSkillConvertor;
-    @Mock private StaffSkillDTOToStaffSkillIdDTO staffSkillIdConvertor;
+    @Mock private StaffSkillDTOToStaffSkillIdDTOConvertor staffSkillIdConvertor;
     @Mock private DTOToStaffSkillConvertor dtoToStaffSkillConvertor;
 
     private AutoCloseable closeable;

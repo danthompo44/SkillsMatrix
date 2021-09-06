@@ -5,7 +5,7 @@ import com.university.skillsmatrix.domain.StaffSkillIdDTO;
 import org.springframework.stereotype.Component;
 
 @Component
-public class StaffSkillDTOToStaffSkillIdDTO {
+public class StaffSkillDTOToStaffSkillIdDTOConvertor {
     public StaffSkillIdDTO convert(StaffSkillDTO staffSkillDTO){
         StaffSkillIdDTO idDto = new StaffSkillIdDTO();
 

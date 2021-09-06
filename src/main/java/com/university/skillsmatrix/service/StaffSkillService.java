@@ -1,7 +1,7 @@
 package com.university.skillsmatrix.service;
 
 import com.university.skillsmatrix.convertor.staffSkill.DTOToStaffSkillConvertor;
-import com.university.skillsmatrix.convertor.staffSkill.StaffSkillDTOToStaffSkillIdDTO;
+import com.university.skillsmatrix.convertor.staffSkill.StaffSkillDTOToStaffSkillIdDTOConvertor;
 import com.university.skillsmatrix.convertor.staffSkill.StaffSkillToDTOConvertor;
 import com.university.skillsmatrix.domain.StaffSkillDTO;
 import com.university.skillsmatrix.domain.StaffSkillIdDTO;
@@ -20,7 +20,7 @@ import java.util.Optional;
 public class StaffSkillService {
     private final StaffSkillRepository staffSkillRepository;
     private final StaffSkillToDTOConvertor staffSkillConvertor;
-    private final StaffSkillDTOToStaffSkillIdDTO staffSkillIdConvertor;
+    private final StaffSkillDTOToStaffSkillIdDTOConvertor staffSkillIdConvertor;
     private final DTOToStaffSkillConvertor dtoToStaffSkillConvertor;
 
     @Transactional

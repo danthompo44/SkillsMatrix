@@ -1,27 +1,16 @@
 package com.university.skillsmatrix.web;
 
-import com.university.skillsmatrix.convertor.staffSkill.IdDTOToStaffSkillDTO;
-import com.university.skillsmatrix.domain.SkillDTO;
-import com.university.skillsmatrix.domain.StaffDTO;
-import com.university.skillsmatrix.domain.StaffSkillDTO;
-import com.university.skillsmatrix.domain.StaffSkillIdDTO;
-import com.university.skillsmatrix.entity.Staff;
 import com.university.skillsmatrix.service.ManagerService;
 import com.university.skillsmatrix.service.SkillService;
 import com.university.skillsmatrix.service.StaffService;
 import com.university.skillsmatrix.service.StaffSkillService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/staff")//localhost:8081/staff
