@@ -216,9 +216,6 @@ public class StaffToDTOConvertorTest {
         assertSame(newDTO.getManager().getUser().getUsername(), staffDTO.getManager().getUser().getUsername());
         assertSame(newDTO.getManager().getUser().getEmail(), staffDTO.getManager().getUser().getEmail());
         assertSame(newDTO.getManager().getUser().getPassword(), staffDTO.getManager().getUser().getPassword());
-        //Assert Manager Role
-        assertEquals(newDTO.getManager().getUser().getRole().getId(), staffDTO.getManager().getUser().getRole().getId());
-        assertSame(newDTO.getManager().getUser().getRole().getType(), staffDTO.getManager().getUser().getRole().getType());
         //Assert Manager Details
         assertEquals(newDTO.getManager().getDetails().getId(), staffDTO.getManager().getDetails().getId());
         assertSame(newDTO.getManager().getDetails().getFirstName(), staffDTO.getManager().getDetails().getFirstName());
@@ -239,7 +236,5 @@ public class StaffToDTOConvertorTest {
         assertSame(newDTO.getUser().getUsername(), staffDTO.getUser().getUsername());
         assertSame(newDTO.getUser().getEmail(), staffDTO.getUser().getEmail());
         assertSame(newDTO.getUser().getPassword(), staffDTO.getUser().getPassword());
-        assertEquals(newDTO.getUser().getRole().getId(), staffDTO.getUser().getRole().getId());
-        assertSame(newDTO.getUser().getRole().getType(), staffDTO.getUser().getRole().getType());
     }
 }
