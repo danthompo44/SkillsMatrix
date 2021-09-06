@@ -48,7 +48,15 @@ public class StaffControllerTest {
     }
 
     @Test
-    public void test02_When_Given_A_Request_For_All_Staff_With_No_Role_Then_Redirect() throws Exception{
+    @WithMockUser(roles = "USER")
+    public void test02_When_Given_A_Request_For_All_Staff_With_A_Role_Of_User_Then_Client_Error() throws Exception{
+        mockMvc.perform(get("/staff/admin/all/"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void test03_When_Given_A_Request_For_All_Staff_With_No_Role_Then_Redirect() throws Exception{
         mockMvc.perform(get("/staff/admin/all/"))
                 .andDo(print())
                 .andExpect(redirectedUrl(REDIRECTED_LOGIN))
@@ -57,7 +65,7 @@ public class StaffControllerTest {
 
     @Test
     @WithMockUser(roles = "ADMIN")
-    public void test03_When_Given_A_Request_For_Staff_Members_Skills_With_A_Role_Of_Admin_Then_Return_Skills() throws Exception{
+    public void test04_When_Given_A_Request_For_Staff_Members_Skills_With_A_Role_Of_Admin_Then_Return_Skills() throws Exception{
         mockMvc.perform(get("/staff/admin/skillPage/1"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -65,9 +73,17 @@ public class StaffControllerTest {
                 .andExpect(model().attributeExists("staffSkills"))
                 .andExpect(model().attributeExists("title"));
     }
+    @Test
+    @WithMockUser(roles = "USER")
+    public void test05_When_Given_A_Request_For_Staff_Members_Skills_With_A_Role_Of_User_Then_Return_Client_Error() throws Exception{
+        mockMvc.perform(get("/staff/admin/skillPage/1"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
 
     @Test
-    public void test04_When_Given_A_Request_For_Staff_Members_Skills_With_No_Role_Then_Redirect() throws Exception{
+    public void test06_When_Given_A_Request_For_Staff_Members_Skills_With_No_Role_Then_Redirect() throws Exception{
         mockMvc.perform(get("/staff/admin/skillPage/1"))
                 .andDo(print())
                 .andExpect(redirectedUrl(REDIRECTED_LOGIN))
@@ -76,7 +92,7 @@ public class StaffControllerTest {
 
     @Test
     @WithMockUser(roles = "ADMIN")
-    public void test05_When_Given_A_Request_For_Managers_Staff_With_A_Role_Of_Admin_Then_Return_Managers_Staff() throws Exception{
+    public void test07_When_Given_A_Request_For_Managers_Staff_With_A_Role_Of_Admin_Then_Return_Managers_Staff() throws Exception{
         mockMvc.perform(get("/staff/admin/managerPage/1"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -86,7 +102,15 @@ public class StaffControllerTest {
     }
 
     @Test
-    public void test06_When_Given_A_Request_For_Managers_Staff_With_No_Role_Then_Redirect() throws Exception{
+    @WithMockUser(roles = "USER")
+    public void test08_When_Given_A_Request_For_Managers_Staff_With_A_Role_Of_User_Then_Return_Client_Error() throws Exception{
+        mockMvc.perform(get("/staff/admin/managerPage/1"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void test09_When_Given_A_Request_For_Managers_Staff_With_No_Role_Then_Redirect() throws Exception{
         mockMvc.perform(get("/staff/admin/managerPage/1"))
                 .andDo(print())
                 .andExpect(redirectedUrl(REDIRECTED_LOGIN))
