@@ -13,7 +13,7 @@
       <h1>My Details</h1>
     </div>
       <div id="details-container">
-          <form th:action="@{/details/admin/update/{id}(id=${details.id})}" method="post">
+          <form th:action="@{/details/update/{id}(id=${details.id})}" method="post">
               <div class="details-line">
                   <p>First Name</p>
                   <label>
@@ -67,7 +67,7 @@
                   <button type="submit" value="Update">Update</button>
               </div>
           </form>
-          <form th:action="@{/details/admin/delete/{id}(id=${details.id})}" method="post">
+          <form th:action="@{/details/delete/{id}(id=${details.id})}" method="post">
               <div class="button-container">
                   <button type="submit" value="Delete">Delete</button>
               </div>

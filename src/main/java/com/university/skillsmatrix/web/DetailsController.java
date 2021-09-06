@@ -29,14 +29,14 @@ public class DetailsController {
     private final StaffService staffService;
 
     @GetMapping("")
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('USER')")
     public String viewDetails(Model model){
         addDetailsToModel(model);
         return "viewMyDetails";
     }
 
-    @PostMapping("/admin/update/{id}")
-    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/update/{id}")
+    @PreAuthorize("hasRole('USER')")
     public String updateDetails(@Valid PersonalDetailsDTO dto,
                                 BindingResult result,
                                 Model model) {
@@ -60,8 +60,8 @@ public class DetailsController {
         }
     }
 
-    @PostMapping("/admin/delete/{id}")
-    @PreAuthorize("isAuthenticated")
+    @PostMapping("/delete/{id}")
+    @PreAuthorize("hasRole('USER')")
     public String deleteDetails(@PathVariable Long id, Model model) {
         detailsService.removeDetails(id);
         return viewDetails(model);
