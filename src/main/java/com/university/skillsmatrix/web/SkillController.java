@@ -105,7 +105,7 @@ public class SkillController {
         return "viewStaffBySkill";
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/view")
     public String viewMySkills(Model model){
         model.addAttribute("staffSkillList",
@@ -114,7 +114,7 @@ public class SkillController {
         return "viewMySkills";
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/editSkillPage/{id}")
     public String viewStaffSkillEditPage(@PathVariable Long id, Model model){
         try{
@@ -128,7 +128,7 @@ public class SkillController {
         return "editStaffSkill";
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('USER')")
     @PostMapping("/staff/update/{id}")
     public String updateAStaffSkill(StaffSkillIdDTO dto, @PathVariable Long id, Model model){
         if(dto.getSkillStrength() > 10 || dto.getSkillStrength() < 0){
@@ -147,7 +147,7 @@ public class SkillController {
         return viewMySkills(model);
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/staff/delete/{id}")
     public String deleteAStaffSkill(@PathVariable Long id, Model model){
         try {
