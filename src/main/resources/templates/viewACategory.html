@@ -10,13 +10,13 @@
         <div id="page-title">
             <h1>View A Category</h1>
         </div>
-        <form th:action="@{/category/admin/update/{id}(id=${category.id})}" method="post">
+        <form id="view-skill-container" th:action="@{/category/admin/update/{id}(id=${category.id})}" method="post">
             <p>
                 <input type="text" th:field="*{category.description}" name="description" placeholder="Description"/>
                 <span th:if="${#fields.hasErrors('category.description')}"
                       th:errors="*{category.description}" th:errorclass="fieldError"></span>
             </p>
-            <input type="submit" value="Update">
+            <button type="submit" value="Update">Update</button>
         </form>
     </div>
 </div>

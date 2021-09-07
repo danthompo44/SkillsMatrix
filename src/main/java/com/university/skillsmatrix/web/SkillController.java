@@ -108,6 +108,10 @@ public class SkillController {
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/view")
     public String viewMySkills(Model model){
+        StaffSkillIdDTO idDTO = new StaffSkillIdDTO();
+        idDTO.setStaffId(staffService.getStaffByAppUserId(userService.getAppUser().getId()).getId());
+        model.addAttribute("staffSkillIdDTO", idDTO);
+        model.addAttribute("skillDTOs", skillService.getAllSkills());
         model.addAttribute("staffSkillList",
                 staffSkillService.getStaffSkillsByStaffId(
                         staffService.getStaffByAppUserId(userService.getAppUser().getId()).getId()));
@@ -156,6 +160,21 @@ public class SkillController {
             model.addAttribute("deletionError", "Category is bound to a skill and cannot be deleted");
         }
 
+        return viewMySkills(model);
+    }
+
+    @PreAuthorize("hasRole('USER')")
+    @PostMapping("/staff/add")
+    public String addAStaffSkill(StaffSkillIdDTO dto, Model model){
+        try {
+            StaffDTO staff = staffService.getStaffById(dto.getStaffId());
+            SkillDTO skill = skillService.getSkillById(dto.getSkillId());
+
+            StaffSkillDTO skillDTO = idConvertor.convert(dto, staff, skill);
+            staffSkillService.save(skillDTO);
+        } catch(Exception ex){
+            return "error";
+        }
         return viewMySkills(model);
     }
 }

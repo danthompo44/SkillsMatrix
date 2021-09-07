@@ -356,6 +356,30 @@ select {
     margin: 10px auto;
 }
 
+#add-staff-skill-container{
+    display: flex;
+    flex-direction: column;
+}
+
+#add-staff-skill-input-container{
+    display: flex;
+    flex-direction: row;
+}
+
+#skill-container{
+    display: flex;
+    flex-direction: column;
+}
+
+#add-staff-skill-wrapper{
+    margin: 10px auto;
+}
+
+#add-staff-skill-wrapper h2{
+    margin: 0 auto;
+    text-align: center;
+}
+
 #no-skills-for-user p{
     text-align: center;
 }
@@ -412,4 +436,12 @@ select {
     justify-content: space-between;
     margin: 5px auto;
     flex-direction: column;
+}
+
+/*View A SKill*/
+#view-skill-container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 20px auto;
 }

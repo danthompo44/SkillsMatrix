@@ -47,6 +47,7 @@ insert into staff_skill(expiry_date, skill_strength, staff_id, skill_id) values 
 insert into staff_skill(expiry_date, skill_strength, staff_id, skill_id) values ('2023-02-19', 5, 4, 2);
 insert into staff_skill(expiry_date, skill_strength, staff_id, skill_id) values ('2023-02-19', 9, 4, 3);
 insert into staff_skill(expiry_date, skill_strength, staff_id, skill_id) values ('2023-02-19', 4, 4, 5);
+create sequence staff_skill_sequence_id start  with (select max(id) + 1 from staff_skill);
 
 insert into app_user_role (user_id, role_id) values (1,1);
 insert into app_user_role (user_id, role_id) values (2,1);
