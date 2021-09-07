@@ -368,7 +368,7 @@ select {
 
 #skill-container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 #add-staff-skill-wrapper{
@@ -394,6 +394,7 @@ select {
     margin: 10px auto;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 /*Admin Home*/

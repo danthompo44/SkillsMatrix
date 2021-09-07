@@ -53,13 +53,15 @@
                                     <span th:if="${#fields.hasErrors('skillStrength')}" th:errors="*{skillStrength}"></span>
                                 </p>
                             </div>
-                            <div id="skill-container">
-                                <p class="add-skill-content">Skill</p>
-                                <select th:field="${staffSkillIdDTO.skillId}">
-                                    <option th:each="s : ${skillDTOs}"
-                                            th:value="${s.id}"
-                                            th:utext="${s.name}"></option>
-                                </select>
+                            <div class="edit-skill-content">
+                                <div id="skill-container">
+                                    <p class="add-skill-content">Skill</p>
+                                    <select th:field="${staffSkillIdDTO.skillId}">
+                                        <option th:each="s : ${skillDTOs}"
+                                                th:value="${s.id}"
+                                                th:utext="${s.name}"></option>
+                                    </select>
+                                </div>
                             </div>
                             <p class="hidden">
                                 Staff Id
