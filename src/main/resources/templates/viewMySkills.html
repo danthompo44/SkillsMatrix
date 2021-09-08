@@ -69,10 +69,10 @@
                                 <span th:if="${#fields.hasErrors('staffId')}" th:errors="*{staffId}"></span>
                             </p>
                         </div>
+                        <button type="submit" value="Add">Add</button>
                         <div id="error-container">
                             <p class="error-text" th:if="${error}" th:text="${error}"></p>
                         </div>
-                        <button type="submit" value="Edit">Add</button>
                     </form>
                 </div>
         </div>
