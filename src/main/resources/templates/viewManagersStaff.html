@@ -22,7 +22,9 @@
                     <td th:text="${staff.getDetails().getFullName()}"></td>
                     <td th:text="${staff.getUser().getEmail()}"></td>
                     <td sec:authorize="hasRole('ADMIN')">
-                        <a class="underlined-link" th:href="@{/staff/admin/skillPage/{id}(id=${staff.getId()})}">View Skills</a>
+                        <a class="underlined-link" th:href="@{/staff/admin/skillPage/{id}(id=${staff.getId()})}">
+                            View Skills
+                        </a>
                 </tr>
             </table>
         </div>

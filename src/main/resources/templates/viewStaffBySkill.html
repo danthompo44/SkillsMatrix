@@ -24,7 +24,11 @@
                         <tr th:each="staff: ${staffList}">
                             <td th:text="${staff.getDetails().getFullName()}"></td>
                             <td sec:authorize="hasRole('ADMIN')">
-                                <a th:text="${staff.getManager().getDetails().getFullName()}" class="underlined-link" th:href="@{/staff/admin/managerPage/{id}(id=${staff.getManager().getId()})}">Manager's Staff</a>
+                                <a th:text="${staff.getManager().getDetails().getFullName()}"
+                                   class="underlined-link"
+                                   th:href="@{/staff/admin/managerPage/{id}(id=${staff.getManager().getId()})}">
+                                    Manager's Staff
+                                </a>
                             </td>
                         </tr>
                     </table>
