@@ -39,6 +39,7 @@ public class AppUser {
     private List<Role> roles = new ArrayList<>();
 
     public String toString(){
-        return String.format("%d, %s, %s, %s", id, username, password, email);
+        return String.format("%d, %s, %s, %s",
+                id, username, password, email);
     }
 }

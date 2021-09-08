@@ -13,8 +13,10 @@ import javax.validation.constraints.NotNull;
 public class PersonalDetails {
     @Id
     @Column(name = "id")
-    @SequenceGenerator(name= "personal_details_sequence", sequenceName = "personal_details_sequence_id", allocationSize = 1)
-    @GeneratedValue(strategy=GenerationType.AUTO, generator="personal_details_sequence")
+    @SequenceGenerator(name= "personal_details_sequence",
+            sequenceName = "personal_details_sequence_id", allocationSize = 1)
+    @GeneratedValue(strategy=GenerationType.AUTO,
+            generator="personal_details_sequence")
     private long id;
 
     @NotNull

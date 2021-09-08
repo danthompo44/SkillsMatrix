@@ -15,7 +15,8 @@ import javax.persistence.*;
 public class Manager{
     @Id
     @Column(name = "id")
-    @SequenceGenerator(name= "staff_sequence", sequenceName = "staff_sequence_id", allocationSize = 1)
+    @SequenceGenerator(name= "staff_sequence",
+            sequenceName = "staff_sequence_id", allocationSize = 1)
     @GeneratedValue(strategy= GenerationType.AUTO, generator="staff_sequence")
     private long id;
 

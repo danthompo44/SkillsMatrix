@@ -16,8 +16,10 @@ import java.util.Date;
 public class StaffSkill {
     @Id
     @Column(name = "id")
-    @SequenceGenerator(name= "staff_skill_sequence", sequenceName = "staff_skill_sequence_id", allocationSize = 1)
-    @GeneratedValue(strategy=GenerationType.AUTO, generator="staff_skill_sequence")
+    @SequenceGenerator(name= "staff_skill_sequence",
+            sequenceName = "staff_skill_sequence_id", allocationSize = 1)
+    @GeneratedValue(strategy=GenerationType.AUTO,
+            generator="staff_skill_sequence")
     private long id;
 
     @Column(name="expiry_date")

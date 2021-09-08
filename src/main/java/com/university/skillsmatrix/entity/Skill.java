@@ -14,8 +14,10 @@ import java.util.List;
 public class Skill {
     @Id
     @Column(name="id")
-    @SequenceGenerator(name= "skill_sequence", sequenceName = "skill_sequence_id", allocationSize = 1)
-    @GeneratedValue(strategy=GenerationType.AUTO, generator="skill_sequence")
+    @SequenceGenerator(name= "skill_sequence",
+            sequenceName = "skill_sequence_id", allocationSize = 1)
+    @GeneratedValue(strategy=GenerationType.AUTO,
+            generator="skill_sequence")
     private long id;
 
     @Column(name = "name")

@@ -18,8 +18,10 @@ import java.util.List;
 public class Staff {
     @Id
     @Column(name = "id")
-    @SequenceGenerator(name= "staff_sequence", sequenceName = "staff_sequence_id", allocationSize = 1)
-    @GeneratedValue(strategy=GenerationType.AUTO, generator="staff_sequence")
+    @SequenceGenerator(name= "staff_sequence",
+            sequenceName = "staff_sequence_id", allocationSize = 1)
+    @GeneratedValue(strategy=GenerationType.AUTO,
+            generator="staff_sequence")
     private long id;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
