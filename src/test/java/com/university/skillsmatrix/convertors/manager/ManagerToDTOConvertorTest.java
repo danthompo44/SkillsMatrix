@@ -38,7 +38,7 @@ public class ManagerToDTOConvertorTest {
         user.setId(2);
         user.setUsername("Username");
         user.setEmail("email@email.com");
-//        user.setRole(role);
+
 
         manager.setId(1);
         manager.setUser(user);

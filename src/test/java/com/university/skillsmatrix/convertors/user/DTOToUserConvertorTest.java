@@ -1,11 +1,9 @@
 package com.university.skillsmatrix.convertors.user;
 
-import com.university.skillsmatrix.convertor.user.AppUserToDTOConvertor;
 import com.university.skillsmatrix.convertor.user.DTOToAppUserConvertor;
 import com.university.skillsmatrix.domain.AppUserDTO;
 import com.university.skillsmatrix.domain.RoleDTO;
 import com.university.skillsmatrix.entity.AppUser;
-import com.university.skillsmatrix.entity.Role;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,8 +37,5 @@ public class DTOToUserConvertorTest {
         assertEquals(dto.getUsername(), user.getUsername());
         assertEquals(dto.getEmail(), user.getEmail());
         assertEquals(dto.getPassword(), user.getPassword());
-        //Assert Role
-//        assertEquals(dto.getRole().getId(), user.getRole().getId());
-//        assertEquals(dto.getRole().getType(), user.getRole().getType());
     }
 }

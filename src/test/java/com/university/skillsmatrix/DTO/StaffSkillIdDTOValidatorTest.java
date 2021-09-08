@@ -1,6 +1,5 @@
 package com.university.skillsmatrix.DTO;
 
-import com.university.skillsmatrix.domain.StaffSkillDTO;
 import com.university.skillsmatrix.domain.StaffSkillIdDTO;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,6 +1,5 @@
 package com.university.skillsmatrix.DTO;
 
-import com.university.skillsmatrix.domain.AppUserDTO;
 import com.university.skillsmatrix.domain.SkillCategoryDTO;
 import org.junit.Before;
 import org.junit.FixMethodOrder;

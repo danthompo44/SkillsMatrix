@@ -59,17 +59,7 @@ public class DTOToStaffConvertorTest {
         user.setUsername(dto.getUsername());
         user.setEmail(dto.getEmail());
         user.setPassword(dto.getPassword());
-//        user.setRole(convertRole(dto.getRole()));
-
         return user;
-    }
-
-    private Role convertRole(RoleDTO dto){
-        Role role = new Role();
-        role.setId(dto.getId());
-        role.setType(dto.getType());
-
-        return role;
     }
 
     private Manager convertManager(ManagerDTO dto){
