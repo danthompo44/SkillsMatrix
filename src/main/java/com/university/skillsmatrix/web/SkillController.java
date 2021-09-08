@@ -167,6 +167,14 @@ public class SkillController {
     @PostMapping("/staff/add")
     public String addAStaffSkill(StaffSkillIdDTO dto, Model model){
         try {
+            if(dto.getSkillStrength() < 0 || dto.getSkillStrength() > 10) {
+                model.addAttribute("error", "Skill strength is not valid");
+                return viewMySkills(model);
+            }
+            if(dto.getExpiryDate() == null){
+                model.addAttribute("error", "Please select a date");
+                return viewMySkills(model);
+            }
             StaffDTO staff = staffService.getStaffById(dto.getStaffId());
             SkillDTO skill = skillService.getSkillById(dto.getSkillId());
 

@@ -68,6 +68,8 @@
                                 <input type="text" th:field="*{staffId}" placeholder="Staff Id"/>
                                 <span th:if="${#fields.hasErrors('staffId')}" th:errors="*{staffId}"></span>
                             </p>
+                        </div>
+                        <div id="error-container">
                             <p class="error-text" th:if="${error}" th:text="${error}"></p>
                         </div>
                         <button type="submit" value="Edit">Add</button>
