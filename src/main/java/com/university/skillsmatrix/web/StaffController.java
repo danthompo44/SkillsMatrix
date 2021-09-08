@@ -19,7 +19,6 @@ public class StaffController {
     private final StaffService staffService;
     private final StaffSkillService staffSkillService;
     private final ManagerService managerService;
-    private final SkillService skillService;
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/all")
@@ -31,9 +30,11 @@ public class StaffController {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/skillPage/{id}")
     public String viewAStaffMembersSkillsPage(@PathVariable Long id, Model model){
-        model.addAttribute("staffSkills", staffSkillService.getStaffSkillsByStaffId(id));
+        model.addAttribute("staffSkills",
+                staffSkillService.getStaffSkillsByStaffId(id));
         model.addAttribute("title",
-                String.format("%s's Skills", staffService.getStaffById(id).getDetails().getFullName()));
+                String.format("%s's Skills",
+                        staffService.getStaffById(id).getDetails().getFullName()));
         return "viewSkillsByStaff";
     }
 
@@ -41,14 +42,14 @@ public class StaffController {
     @GetMapping("/admin/managerPage/{id}")
     public String viewAManagersStaffPage(@PathVariable Long id, Model model){
         try{
-            model.addAttribute("staffList", staffService.getStaffByManagerId(id));
+            model.addAttribute("staffList",
+                    staffService.getStaffByManagerId(id));
             model.addAttribute("title",
-                    String.format("%s's Staff", managerService.findByManagerId(id).getDetails().getFullName()));
+                    String.format("%s's Staff",
+                            managerService.findByManagerId(id).getDetails().getFullName()));
         } catch (Exception ex){
             return "error";
         }
         return "viewManagersStaff";
     }
-
-
 }

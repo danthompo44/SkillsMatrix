@@ -52,10 +52,14 @@ public class DetailsController {
 
     public void addDetailsToModel(Model model){
         if(userService.isManager()){
-            model.addAttribute("details", managerService.getManagerByAppUserId(userService.getAppUser().getId()).getDetails());
+            model.addAttribute("details",
+                    managerService.getManagerByAppUserId(
+                            userService.getAppUser().getId()).getDetails());
             // Query Manager Service for their details
         } else  {
-            model.addAttribute("details", staffService.getStaffByAppUserId(userService.getAppUser().getId()).getDetails());
+            model.addAttribute("details",
+                    staffService.getStaffByAppUserId(
+                            userService.getAppUser().getId()).getDetails());
             //Query Staff Service for their details
         }
     }

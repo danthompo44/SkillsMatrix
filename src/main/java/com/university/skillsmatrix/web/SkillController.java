@@ -125,7 +125,8 @@ public class SkillController {
             model.addAttribute("staffSkillIdDTO", staffSkillService.findIdDtoById(id));
             model.addAttribute("titleString",
                     String.format("Edit Your %s Skill",
-                            skillService.getSkillById(staffSkillService.findById(id).getSkill().getId()).getName()));
+                            skillService.getSkillById(
+                                    staffSkillService.findById(id).getSkill().getId()).getName()));
         } catch (Exception ex){
             return "error";
         }
