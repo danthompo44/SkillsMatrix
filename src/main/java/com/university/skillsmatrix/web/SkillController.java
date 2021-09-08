@@ -139,6 +139,11 @@ public class SkillController {
             model.addAttribute("error", "Skill level must be between 0-10.");
             return viewStaffSkillEditPage(id, model);
         }
+
+        if( dto.getExpiryDate() == null) {
+            model.addAttribute("error", "Date cannot be null");
+            return viewStaffSkillEditPage(id, model);
+        }
         try{
             StaffDTO staff = staffService.getStaffById(dto.getStaffId());
             SkillDTO skill = skillService.getSkillById(dto.getSkillId());
