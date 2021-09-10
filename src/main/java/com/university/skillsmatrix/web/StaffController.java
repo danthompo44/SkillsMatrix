@@ -23,18 +23,22 @@ public class StaffController {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/all")
     public String getAllStaff(Model model){
-        model.addAttribute("staffList", staffService.getAllStaff());
+        model.addAttribute("staffList",
+                staffService.getAllStaff());
         return "viewAllStaff";
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/skillPage/{id}")
-    public String viewAStaffMembersSkillsPage(@PathVariable Long id, Model model){
+    public String viewAStaffMembersSkillsPage(
+            @PathVariable Long id, Model model){
         model.addAttribute("staffSkills",
-                staffSkillService.getStaffSkillsByStaffId(id));
+                staffSkillService
+                        .getStaffSkillsByStaffId(id));
         model.addAttribute("title",
                 String.format("%s's Skills",
-                        staffService.getStaffById(id).getDetails().getFullName()));
+                        staffService.getStaffById(id).
+                                getDetails().getFullName()));
         return "viewSkillsByStaff";
     }
 

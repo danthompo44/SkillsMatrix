@@ -135,9 +135,11 @@ public class SkillController {
 
     @PreAuthorize("hasRole('USER')")
     @PostMapping("/staff/update/{id}")
-    public String updateAStaffSkill(StaffSkillIdDTO dto, @PathVariable Long id, Model model){
+    public String updateAStaffSkill(
+            StaffSkillIdDTO dto, @PathVariable Long id, Model model){
         if(dto.getSkillStrength() > 10 || dto.getSkillStrength() < 0){
-            model.addAttribute("error", "Skill level must be between 0-10.");
+            model.addAttribute("error",
+                    "Skill level must be between 0-10.");
             return viewStaffSkillEditPage(id, model);
         }
 

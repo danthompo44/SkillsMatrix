@@ -21,8 +21,10 @@ public class StaffSkillIdDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date expiryDate;
 
-    @Min(value = 0, message = "Skill strength must be positive")
-    @Max(value = 10, message = "Skill strength has a maximum of 10")
+    @Min(value = 0, message =
+            "Skill strength must be positive")
+    @Max(value = 10, message =
+            "Skill strength has a maximum of 10")
     private int skillStrength;
 
     @NotNull(message = "Skill cannot be null")
